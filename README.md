@@ -4,7 +4,7 @@
 
 ### Elevator Pitch
 
-This is a video library where verified users can upload instructional or informational videos. Users will be able to access the site without an account, but will only be able to submit videos publicly by obtaining a verified account.
+This is a video library where verified users can upload instructional or informational videos. Users will be able to access the site without an account or by obtaining an unverified account, but will only be able to submit videos publicly by obtaining a verified account.
 
 ### Key Features
 
