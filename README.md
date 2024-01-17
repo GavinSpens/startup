@@ -1,1 +1,6 @@
-# startup
+# Startup
+
+## Startup Specification
+
+### Elevator Pitch
+
