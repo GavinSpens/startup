@@ -2,7 +2,6 @@
 --------------------
 
 ## Startup Specification
---------------------------
 
 ### Elevator Pitch
 
