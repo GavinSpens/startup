@@ -26,6 +26,6 @@ This is a video library where verified users can upload instructional or informa
 ![Home Page](Screenshot%202024-01-17%20204800.png)
 ![Login](Screenshot%202024-01-17%20204851.png)
 ![Forgot Password](Screenshot%202024-01-17%20205159.png)
-![Verified Profile](startup/blob/main/Screenshot%202024-01-17%20211226.png)
+![Verified Profile](Screenshot%202024-01-17%20211226.png)
 ![Unverified Profile](Screenshot%202024-01-17%20211348.png)
 ![Upload Video](Screenshot%202024-01-17%20213807.png)
