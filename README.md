@@ -23,3 +23,4 @@ This is a video library where verified users can upload instructional or informa
 
 ### Site Map
 
+![Home Page](Screenshot%202024-01-17%20204800.png)
