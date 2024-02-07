@@ -29,3 +29,18 @@ This is a video library where verified users can upload instructional or informa
 ![Verified Profile](Screenshot%202024-01-17%20211226.png)
 ![Unverified Profile](Screenshot%202024-01-17%20211348.png)
 ![Upload Video](Screenshot%202024-01-17%20213807.png)
+
+---------------------------
+
+## HTML Deliverable
+
+For this deliverable I built out the structure of my application using HTML.
+
+*I couldn't get it running on the actual website today, but all of the files are here. I'm planning on going in and seeing what my issue is tomorrow*
+
+- **HTML pages** - Quite a few different pages with different functions. Located in the HTML_files folder.
+- **Links** - Each page links together, except for the seperation between "verified" users, due to the outside interaction required.
+- **Text** - There isn't really much text (some though,) but I think that's not really where the bulk of my project will be.
+- **Images** - I didn't get images to show up really, but the frame is there. idk if that counts
+- **DB/Login** - Input box and submit button for login. Database will be the video library along with other information.
+- **WebSocket** - Video posts will be represented as real-time interactions. If I have time, I may also include a comments feature or a "like" feature (I know I said I'd do that in earlier phases), but I'm not quite sure.
