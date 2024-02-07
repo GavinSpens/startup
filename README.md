@@ -36,8 +36,6 @@ This is a video library where verified users can upload instructional or informa
 
 For this deliverable I built out the structure of my application using HTML.
 
-*I couldn't get it running on the actual website today, but all of the files are here. I'm planning on going in and seeing what my issue is tomorrow*
-
 - **HTML pages** - Quite a few different pages with different functions. Located in the HTML_files folder.
 - **Links** - Each page links together, except for the seperation between "verified" users, due to the outside interaction required.
 - **Text** - There isn't really much text (some though,) but I think that's not really where the bulk of my project will be.
