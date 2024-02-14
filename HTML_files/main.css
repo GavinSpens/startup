@@ -26,8 +26,6 @@ html {
     background-color: #2a2a2a;
 }
 
-
-
 body {
     display: flex;
     flex-direction: column;
@@ -75,6 +73,10 @@ header .navbar {
 
 .navbar a:hover {
     color: white;
+}
+
+.navbar form {
+    padding-right: 10px;
 }
 
 main {
