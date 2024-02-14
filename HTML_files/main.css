@@ -11,6 +11,7 @@ html {
 ::-webkit-scrollbar-thumb {
     background-color: #3a3a3a;
     border-radius: 10px;
+    border: 1px solid#aaaaaa;
 }
 
 ::-webkit-scrollbar-track {
@@ -44,6 +45,12 @@ header .navbar {
     border-radius: 10px;
     height: 90px;
     font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .navbar input {
@@ -59,6 +66,11 @@ header .navbar {
 .navbar a {
     color: lightskyblue;
     text-decoration: none;
+}
+
+.navbar .navbar-brand {
+    font-size: 30px;
+    font-family: "Comic Sans MS", cursive;
 }
 
 .navbar a:hover {
@@ -80,13 +92,23 @@ main .wrapper {
 main div.d-inline-block {
     position: fixed;
     top: 90px;
-    bottom: 55px;
+    bottom: 35px;
     left: 0;
     margin: 10px;
     padding: 10px;
     background-color: #3a3a3a;
     border-radius: 10px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main div.d-inline-block .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
 }
 
 main div.d-inline-block .btn.btn-primary {
@@ -94,20 +116,32 @@ main div.d-inline-block .btn.btn-primary {
     width: 140px;
 }
 
+main div.d-inline-block a[type="login"] {
+    position: fixed;
+    left: 20px;
+    bottom: 55px;
+    width: 140px;
+}
+
 .container-fluid .wrapper .video-container {
+    position: fixed;
+    top: 100px;
+    height: calc(100vh - 145px);
+    overflow-y: auto;
     display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
     padding: 20px;
-    margin-left: 200px;
+    margin-left: 190px;
+    border-radius: 10px;
     background-color: #3a3a3a;
+    width: calc(100% - 210px);
 }
 
 .container-fluid .wrapper .video-container .video-block {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    overflow-y: auto;
 }
 
 nav {
@@ -135,14 +169,14 @@ main a {
 
 footer {
     position: fixed;
-    top: calc(100vh - 35px - 20px);
-    height: 35px;
+    top: calc(100vh - 45px);
+    height: 45px;
     width: calc(100% - 20px);
     justify-content: center;
     align-items: center;
     background-color: #202020;
     color: white;
-    border: 1px solid #aaaaaa;
+    border-top: 1px solid #aaaaaa;
     border-radius: 10px;
     margin: 10px;
     text-align: center;
