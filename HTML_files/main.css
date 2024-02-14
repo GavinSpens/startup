@@ -4,6 +4,29 @@ html {
     color: white;
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #3a3a3a;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #202020;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #4a4a4a;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #2a2a2a;
+}
+
+
+
 body {
     display: flex;
     flex-direction: column;
@@ -43,7 +66,7 @@ header .navbar {
 }
 
 main {
-    flex: 1 calc(100vh - 110px);
+    flex: 1 calc(100vh - 145px);
     display: flex;
     flex-direction: column;
 }
@@ -56,7 +79,8 @@ main .wrapper {
 
 main div.d-inline-block {
     position: fixed;
-    top: 0;
+    top: 90px;
+    bottom: 55px;
     left: 0;
     margin: 10px;
     padding: 10px;
@@ -65,20 +89,23 @@ main div.d-inline-block {
     text-align: center;
 }
 
-main div.d-inline-block .btn {
+main div.d-inline-block .btn.btn-primary {
     margin: 10px;
+    width: 140px;
 }
 
-main div.video-block {
-    flex: 1;
+.container-fluid .wrapper .video-container {
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    margin-left: 200px;
+    background-color: #3a3a3a;
+}
+
+.container-fluid .wrapper .video-container .video-block {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: top;
-    margin: 10px;
-    margin-left: 200px;
-    padding: 10px;
-    background-color: #3a3a3a;
     border-radius: 10px;
     overflow-y: auto;
 }
@@ -107,14 +134,16 @@ main a {
 }
 
 footer {
-    flex: 0 35px;
-    display: flex;
-    flex-direction: row;
+    position: fixed;
+    top: calc(100vh - 35px - 20px);
+    height: 35px;
+    width: calc(100% - 20px);
     justify-content: center;
     align-items: center;
     background-color: #202020;
     color: white;
     border: 1px solid #aaaaaa;
     border-radius: 10px;
-    margin: 20px;
+    margin: 10px;
+    text-align: center;
 }
