@@ -102,7 +102,7 @@ main div.d-inline-block a[type="login"] {
     bottom: 55px;
     width: 140px;
 }
-/*
+
 .container-fluid .wrapper .video-container {
     position: fixed;
     top: 100px;
@@ -115,7 +115,7 @@ main div.d-inline-block a[type="login"] {
     border-radius: 10px;
     background-color: #3a3a3a;
     width: calc(100% - 210px);
-}*/
+}
 
 .container-fluid .wrapper .video-container .video-block {
     display: flex;
