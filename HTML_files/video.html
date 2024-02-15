@@ -20,15 +20,13 @@
     <body class="bg-dark text-light">
         <header class="container-fluid">
             <nav class="navbar fixed-top navbar-dark">
-                <nav>
-                    <a href="index.html"><img src="play.png" alt="Logo" height="50px" width="50px">Video Library</a>
-                </nav>
-                <a class="navbar-brand" href="#">Video</a>
+                <a class="navbar-brand" href="index.html"><img src="play.png" alt="Logo" height="50px" width="50px">Video Library</a>
+                <h1>Video</h1>
+                <input type="text" name="varSearch" placeholder="Search...">
+                <form action="login.html">
+                        <button class="btn btn-primary" type="login" value="Login">Login</button>
+                </form>
             </nav>
-            <input type="text" name="varSearch" placeholder="Search...">
-            <form action="login.html">
-                    <button class="btn btn-primary" type="login" value="Login">Login</button>
-            </form>
         </header>
         <main class="container-fluid">
             <div class="wrapper">
@@ -48,13 +46,17 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <span>
-                    <img src="video.jpg" alt="________" height="300px" width="534px">
-                </span>
-                <span>
-                    ***____Video____***
-                </span>                
+            <div class="wrapper">
+                <div class="video-container">
+                    <div class="video-block">
+                        <span>
+                            <img src="video.jpg" alt="________" height="300px" width=534px>
+                        </span>
+                        <span>
+                            ***____Video____***
+                        </span>
+                    </div>
+                </div>
             </div>
         </main>
         <footer>
