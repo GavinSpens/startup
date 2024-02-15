@@ -20,39 +20,35 @@
     <body class="bg-dark text-light">
         <header class="container-fluid">
             <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand" href="#"><img src="play.png" alt="Logo" height="50px" width="50px">Video Library</a>
+                <a class="navbar-brand" href="index.html"><img src="play.png" alt="Logo" height="50px" width="50px">Video Library</a>
                 <span>
-                    Login
+                    <h1>Login</h1>
                 </span>
             </nav>
         </header>
         <main class="container-fluid">
-            <div>
-                Email address: <input type="text" name="varEmail" placeholder="Your email here...">
-            </div>
-            <div>
-                <span>
+            <div class="email-password">
+                <span class="container-fluid">
+                    Email address: <input type="text" name="varEmail" placeholder="Your email here...">
+                </span>
+                <span class="container-fluid">
                     Password: <input type="text" name="varPassword" placeholder="Password...">
                 </span>
-                <span>
-                    <nav>
-                        <a href="forgot.html">Forgot Password?</a>
-                    </nav>
-                </span>
             </div>
+            <nav class="forgot">
+                <a href="forgot.html">Forgot Password?</a>
+            </nav>
             <div>
                 <span>
-                    <button type="submit">Sign in</button>
+                    <button class="btn btn-primary" type="submit">Sign in</button>
                 </span>
             </div>
-            <div>
+            <div class="registration-block">
                 <span>
                     Don't have an account?
-                </span>
-                <span>
-                    <nav>
-                        <a href="register.html">Register</a>
-                    </nav>
+                    <form action="register.html">
+                        <button class="btn btn-primary" type="register" value="Register" >Register</button>
+                    </form>
                 </span>
             </div>
         </main>

@@ -72,89 +72,69 @@ main {
     flex: 1 calc(100vh - 145px);
     display: flex;
     flex-direction: column;
-}
-
-main .wrapper {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-}
-
-main div.d-inline-block {
-    position: fixed;
-    top: 90px;
-    bottom: 35px;
-    left: 0;
-    margin: 10px;
-    padding: 10px;
-    background-color: #3a3a3a;
-    border-radius: 10px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-main div.d-inline-block .wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
-    align-items: center;
-}
-
-main div.d-inline-block .btn.btn-primary {
-    margin: 10px;
-    width: 140px;
-}
-
-main div.d-inline-block a[type="login"] {
-    position: fixed;
-    left: 20px;
-    bottom: 55px;
-    width: 140px;
-}
-/*
-.container-fluid .wrapper .video-container {
-    position: fixed;
-    top: 100px;
-    height: calc(100vh - 145px);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 20px;
-    padding: 20px;
-    margin-left: 190px;
-    border-radius: 10px;
-    background-color: #3a3a3a;
-    width: calc(100% - 210px);
-}*/
-
-.container-fluid .wrapper .video-container .video-block {
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-}
-
-nav {
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
-img {
-    border-radius: 7.5px;
+.email-password {
+    font-size: 20px;
+    /* text-align: right; */
+    width: 100%;
+    /* margin-right: calc(25vw - 50px); */
+}
+
+.email-password .container-fluid {
+    display: block;
+}
+
+/* 
+.email-password .container-fluid span {
+    display: flex;
+    flex: .5;
+    flex-direction: row;
+    justify-content: right;
+} */
+
+main input {
+    width: 25%;
+    padding: 10px;
     margin: 10px;
-}
-
-main div.video-block a:hover {
+    border-radius: 20px;
+    border: 1px solid #aaaaaa;
+    background-color: #3a3a3a;
     color: white;
+    font-size: 16px;
+    /* display: flex;
+    flex: .5;
+    flex-direction: row;
+    justify-content: left; */
+
 }
 
 main a {
-    color: white;
+    color: lightskyblue;
     text-decoration: none;
     text-align: center;
     justify-content: center;
     margin: 10px;
     width: 100%;
+}
+
+main a:hover {
+    color: white;
+}
+
+.registration-block {
+    margin: 40px;
+}
+
+.btn {
+    margin: 20px;
+}
+
+form .btn{
+    margin: 7px;
 }
 
 footer {
