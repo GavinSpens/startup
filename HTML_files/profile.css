@@ -128,9 +128,26 @@ nav {
     justify-content: center;
 }
 
+.edit-btn {
+    height: 75px;
+    width: 100%;
+    text-align: right;
+}
+
+.edit-btn button {
+    margin: 15px;
+    margin-right: 50px;
+}
+
 img {
-    border-radius: 7.5px;
+    border-radius: 100px;
     margin: 10px;
+    float: left;
+    margin-right: 20px;
+}
+
+p {
+    margin: 20px;
 }
 
 main div.video-block a:hover {
@@ -148,8 +165,8 @@ main a {
 
 footer {
     position: fixed;
-    top: calc(100vh - 45px);
-    height: 45px;
+    top: calc(100vh - 90px);
+    height: 90px;
     width: calc(100% - 20px);
     justify-content: center;
     align-items: center;
@@ -158,5 +175,6 @@ footer {
     border-top: 1px solid #aaaaaa;
     border-radius: 10px;
     margin: 10px;
+    padding: 20px;
     text-align: center;
 }
