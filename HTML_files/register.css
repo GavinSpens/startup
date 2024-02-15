@@ -1,4 +1,4 @@
-html {
+/* html {
     font-size: 16px;
     background-color: #202020;
     color: white;
@@ -115,8 +115,8 @@ main div.d-inline-block a[type="login"] {
     border-radius: 10px;
     background-color: #3a3a3a;
     width: calc(100% - 210px);
-}*/
-
+} */
+/*
 .container-fluid .wrapper .video-container .video-block {
     display: flex;
     flex-direction: column;
@@ -144,6 +144,169 @@ main a {
     justify-content: center;
     margin: 10px;
     width: 100%;
+}
+
+footer {
+    position: fixed;
+    top: calc(100vh - 45px);
+    height: 45px;
+    width: calc(100% - 20px);
+    justify-content: center;
+    align-items: center;
+    background-color: #202020;
+    color: white;
+    border-top: 1px solid #aaaaaa;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+} */
+
+
+html {
+    font-size: 16px;
+    background-color: #202020;
+    color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+    background-color: #202020;  
+}
+
+header {
+    flex: 0 90px;
+}
+
+header .navbar {
+    background-color: #202020;
+    border-bottom: 2px solid gray;
+    border-radius: 10px;
+    height: 90px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.btn[type="cancel"] {
+    background-color: #777;
+    border-color: #777
+}
+
+.btn[type="cancel"]:hover {
+    background-color: #555;
+    border-color: #555
+}
+
+.navbar input {
+    width: 25%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid #aaaaaa;
+    background-color: #3a3a3a;
+    color: white;
+}
+
+.navbar a {
+    color: lightskyblue;
+    text-decoration: none;
+}
+
+.navbar .navbar-brand {
+    font-size: 30px;
+    font-family: "Comic Sans MS", cursive;
+}
+
+.navbar a:hover {
+    color: white;
+}
+
+.navbar form {
+    padding-right: 10px;
+}
+
+.navbar {
+    align-items: left;
+}
+
+.navbar span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+main {
+    flex: 1 calc(100vh - 145px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.email-password {
+    font-size: 20px;
+    /* text-align: right; */
+    width: 100%;
+    /* margin-right: calc(25vw - 50px); */
+}
+
+.email-password .container-fluid {
+    display: block;
+}
+
+/* 
+.email-password .container-fluid span {
+    display: flex;
+    flex: .5;
+    flex-direction: row;
+    justify-content: right;
+} */
+
+main input {
+    width: 25%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid #aaaaaa;
+    background-color: #3a3a3a;
+    color: white;
+    font-size: 16px;
+    /* display: flex;
+    flex: .5;
+    flex-direction: row;
+    justify-content: left; */
+
+}
+
+main a {
+    color: lightskyblue;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+    width: 100%;
+}
+
+main a:hover {
+    color: white;
+}
+
+.registration-block {
+    margin: 40px;
+}
+
+.btn {
+    margin: 20px;
+}
+
+form .btn{
+    margin: 7px;
 }
 
 footer {
