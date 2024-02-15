@@ -7,7 +7,7 @@
         <title>Reset Password</title>
         <link rel="icon" href="***some_icon***" />
 
-        <link rel="stylesheet" href="forgot.css" />
+        <link rel="stylesheet" href="forgot_login.css" />
 
         <!-- Include bootstrap CSS framework -->
         <link
@@ -19,28 +19,28 @@
     </head>
     <body class="bg-dark text-light">
         <header class="container-fluid">
-        <nav class="navbar fixed-top navbar-dark">
-            <a class="navbar-brand" href="#">Simon</a>
-                    <img src="play.png" alt="Logo" height="50px" width="50px"> 
-                    <nav>
-                        <a href="index.html">Logo</a>
-                    </nav> 
-                </span>
+            <nav class="navbar fixed-top navbar-dark">
+                <a class="navbar-brand" href="index.html">
+                    <img src="play.png" alt="Logo" height="50px" width="50px">
+                    Video Library
+                </a>
                 <span>
-                    Forgot Password?
+                    <h1>Forgot Password?</h1>
                 </span>
-            </div>
+            </nav>
         </header>
         <main class="container-fluid">
-            <div>
-                Email address: <input type="text" name="varEmail" placeholder="Your email here...">
+            <div class="email-password">
+                <span class="container-fluid">
+                    Email address: <input type="text" name="varEmail" placeholder="Your email here...">
+                </span>
             </div>
             <div>
                 <span>
-                    <button type="submit">Submit</button>
+                    <button class="btn btn-primary" type="cancel">Cancel</button>
                 </span>
                 <span>
-                    <button type="cancel">Cancel</button>
+                    <button class="btn btn-primary" type="submit">Submit</button>
                 </span>
             </div>
         </main>
