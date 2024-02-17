@@ -19,25 +19,20 @@
     </head>
     <body class="bg-dark text-light">
         <header class="container-fluid">
-        <nav class="navbar fixed-top navbar-dark">
-            <a class="navbar-brand" href="#">Simon</a>
-                    <img src="play.png" alt="Logo" height="50px" width="50px"> 
-                    <nav>
-                        <a href="index.html">Logo</a>
-                    </nav> 
-                </span>
+            <nav class="navbar fixed-top navbar-dark">
+                <a class="navbar-brand" href="index.html">
+                    <img src="play.png" alt="Logo" height="50px" width="50px">
+                    Video Library
+                </a>
                 <span>
-                    Upload Video
+                    <h1>Upload Video</h1>
                 </span>
-                <span>
-                    <button type="Sign Out">Sign Out</button>
-                </span>
-            </div>
+            </nav>
         </header>
         <main class="container-fluid">
             <div>
                 <span>
-                    <input type="file" name="varVideo" accept="video/*">
+                    <input class="upload_video_btn" type="file" name="varVideo" accept="video/*">
                 </span>
                 <span>
                     <input type="text" name="varTitle" placeholder="Title...">
@@ -56,7 +51,7 @@
             </div>
         </main>
         <footer>
-
+            <button class="btn btn-primary" type="button">Sign Out</button>
         </footer>
     </body>
 </html>
