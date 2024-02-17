@@ -342,6 +342,12 @@ main div.d-inline-block a[type="login"] {
     margin-left: 20px;
 }
 
+.box .myvid-title {
+    display: flex;
+    margin-right: 50px;
+    justify-content: space-between;
+}
+
 .top-of-box {
     display: flex;
     flex-direction: row;
