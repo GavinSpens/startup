@@ -23,12 +23,12 @@ This is a video library where verified users can upload instructional or informa
 
 ### Site Map
 
-![Home Page](Screenshot%202024-01-17%20204800.png)
-![Login](Screenshot%202024-01-17%20204851.png)
-![Forgot Password](Screenshot%202024-01-17%20205159.png)
-![Verified Profile](Screenshot%202024-01-17%20211226.png)
-![Unverified Profile](Screenshot%202024-01-17%20211348.png)
-![Upload Video](Screenshot%202024-01-17%20213807.png)
+![Home Page](sitemapimages/Screenshot%202024-01-17%20204800.png)
+![Login](sitemapimages/Screenshot%202024-01-17%20204851.png)
+![Forgot Password](sitemapimages/Screenshot%202024-01-17%20205159.png)
+![Verified Profile](sitemapimages/Screenshot%202024-01-17%20211226.png)
+![Unverified Profile](sitemapimages/Screenshot%202024-01-17%20211348.png)
+![Upload Video](sitemapimages/Screenshot%202024-01-17%20213807.png)
 
 ---------------------------
 
