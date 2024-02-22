@@ -1,3 +1,25 @@
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    border: 1px solid#aaaaaa;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #202020;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #4a4a4a;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #2a2a2a;
+}
+
 html {
     font-size: 16px;
     background-color: #202020;
@@ -23,10 +45,15 @@ header .navbar {
     font-size: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    align-items: left;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.navbar span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .navbar input {
@@ -102,20 +129,44 @@ main div.d-inline-block a[type="login"] {
     bottom: 55px;
     width: 140px;
 }
-/*
-.container-fluid .wrapper .video-container {
+
+.box {
     position: fixed;
     top: 100px;
-    height: calc(100vh - 145px);
+    height: calc(100vh - 190px);
+    border-radius: 10px;
+    background-color: #3a3a3a;
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.box h1 {
+    margin-left: 20px;
+}
+
+.box .myvid-title {
+    display: flex;
+    margin-right: 50px;
+    justify-content: space-between;
+}
+
+.top-of-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.container-fluid .wrapper .video-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
     padding: 20px;
-    margin-left: 190px;
-    border-radius: 10px;
-    background-color: #3a3a3a;
-    width: calc(100% - 210px);
-}*/
+    width: calc(100% - 20px);
+}
 
 .container-fluid .wrapper .video-container .video-block {
     display: flex;
@@ -128,9 +179,93 @@ nav {
     justify-content: center;
 }
 
+.edit-btn {
+    height: 75px;
+    width: 100%;
+    text-align: right;
+}
+
+.edit-btn button {
+    margin: 15px;
+    margin-right: 50px;
+}
+
 img {
     border-radius: 7.5px;
     margin: 10px;
+}
+
+.profile-img img {
+    border-radius: 100px;
+    margin: 20px;
+    float: left;
+}
+
+p {
+    margin: 20px;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid #aaaaaa;
+    background-color: #3a3a3a;
+    color: #aaaaaa;
+    width: 40vw;
+}
+
+input[name="varTitle"] {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    font-size: 20px;
+    height: fit-content;
+    margin-top: 10px;
+}
+
+textarea {
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid #aaaaaa;
+    background-color: #3a3a3a;
+    color: #aaaaaa;
+    width: 40vw;
+    height: 200px;
+}
+
+.upload-video-btn {
+    position: absolute;
+    top: 100px;
+    left: 15%;
+    height: 25vw;
+    width: 25vw;
+    opacity: 0;
+}
+
+.input-block label {
+    position: absolute;
+    top: 100px;
+    left: 15%;
+    height: 25vw;
+    width: 25vw;
+    border-radius: 10px;
+    background-color: #3a3a3a;
+    color: white;
+    border: 1px solid #aaaaaa;
+}
+
+.upload-label:hover {
+    cursor: pointer;
+    background-color: #4a4a4a;
+}
+
+label.upload-label.dragover {
+    border: 2px dashed #aaaaaa;
 }
 
 main div.video-block a:hover {
@@ -148,8 +283,8 @@ main a {
 
 footer {
     position: fixed;
-    top: calc(100vh - 45px);
-    height: 45px;
+    top: calc(100vh - 90px);
+    height: 90px;
     width: calc(100% - 20px);
     justify-content: center;
     align-items: center;
@@ -158,5 +293,6 @@ footer {
     border-top: 1px solid #aaaaaa;
     border-radius: 10px;
     margin: 10px;
+    padding: 20px;
     text-align: center;
 }

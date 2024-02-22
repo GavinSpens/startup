@@ -16,6 +16,7 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
         crossorigin="anonymous"
         />
+        <script src="upload.js" defer></script>
     </head>
     <body class="bg-dark text-light">
         <header class="container-fluid">
@@ -30,13 +31,14 @@
             </nav>
         </header>
         <main class="container-fluid">
-            <div>
+            <div class="input-block">
                 <span>
-                    <input class="upload_video_btn" type="file" name="varVideo" accept="video/*">
+                    <input class="upload-video-btn" type="file" name="varVideo" accept=".mp4">
+                    <label class="upload-label" for="varVideo">Drag file here or browse for file</label>
                 </span>
                 <span>
                     <input type="text" name="varTitle" placeholder="Title...">
-                    <input type="text" name="varDescription" placeholder="Description...">
+                    <textarea name="varDescription" rows="10" cols="30" maxlength="" placeholder="Description..."></textarea>
                 </span>
             </div>
             <div>
@@ -46,7 +48,7 @@
             </div>
             <div>
                 <span>
-                    <bar>Progress: 0%</bar>
+                    <bar class="progress-bar">Progress: 0%</bar>
                 </span>
             </div>
         </main>
