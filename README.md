@@ -23,12 +23,12 @@ This is a video library where verified users can upload instructional or informa
 
 ### Site Map
 
-![Home Page](Screenshot%202024-01-17%20204800.png)
-![Login](Screenshot%202024-01-17%20204851.png)
-![Forgot Password](Screenshot%202024-01-17%20205159.png)
-![Verified Profile](Screenshot%202024-01-17%20211226.png)
-![Unverified Profile](Screenshot%202024-01-17%20211348.png)
-![Upload Video](Screenshot%202024-01-17%20213807.png)
+![Home Page](./SiteMapImages/Index.png)
+![Login](./SiteMapImages/Login.png)
+![Forgot Password](./SiteMapImages/Forgot.png)
+![Verified Profile](./SiteMapImages/Verified.png)
+![Unverified Profile](./SiteMapImages/Profile.png)
+![Upload Video](./SiteMapImages/Upload.png)
 
 ---------------------------
 
@@ -41,4 +41,4 @@ For this deliverable I built out the structure of my application using HTML.
 - **Text** - There isn't really much text (some though,) but I think that's not really where the bulk of my project will be.
 - **Images** - I have an image for my logo present on each page.
 - **DB/Login** - Input box and submit button for login. Database will be the video library along with other information.
-- **WebSocket** - Video posts will be represented as real-time interactions. If I have time, I may also include a comments feature or a "like" feature (I know I said I'd do that in earlier phases), but I'm not quite sure.
+- **WebSocket** - Video posts will be represented as real-time interactions. If I have time, I may also include a comments feature or a "like" feature.
