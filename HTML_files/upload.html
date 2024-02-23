@@ -33,27 +33,29 @@
         <main class="container-fluid">
             <div class="input-block">
                 <span>
-                    <input class="upload-video-btn" type="file" name="varVideo" accept=".mp4">
+                    <input class="file-input" type="file" name="varVideo" accept=".mp4">
                     <label class="upload-label" for="varVideo">Drag file here or browse for file</label>
                 </span>
                 <span>
                     <input type="text" name="varTitle" placeholder="Title...">
-                    <textarea name="varDescription" rows="10" cols="30" maxlength="" placeholder="Description..."></textarea>
+                    <textarea name="varDescription" placeholder="Description..."></textarea>
                 </span>
             </div>
             <div>
                 <span>
-                    <button type="submit">Upload</button>
+                    <button class="btn btn-primary" type="submit">Upload</button>
                 </span>
             </div>
-            <div>
-                <span>
-                    <bar class="progress-bar">Progress: 0%</bar>
+            <div class="progress-bar">
+                <span class="percent">
+                    Progress: 0%
+                </span>
+                <span class="progress">
                 </span>
             </div>
         </main>
         <footer>
-            <button class="btn btn-primary" type="button">Sign Out</button>
+                <button class="btn btn-primary" type="button">Sign Out</button>
         </footer>
     </body>
 </html>

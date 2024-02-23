@@ -26,6 +26,28 @@ html {
     color: white;
 }
 
+.btn.btn-primary {
+    border-radius: 20px;
+    border: 1px solid hsl(203, 100%, 75%);
+    background-color: hsl(203, 100%, 50%);
+    color: white;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn.btn-primary:hover {
+    border: 1px solid hsl(207, 100%, 70%);
+    background-color: hsl(207, 100%, 45%);
+}
+
+.btn.btn-primary:active {
+    border: 2px solid hsl(207, 100%, 70%) !important;
+    background-color: hsl(207, 100%, 45%) !important;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -220,13 +242,13 @@ input[name="varTitle"] {
     top: 100px;
     left: 50%;
     font-size: 20px;
-    height: fit-content;
+    height: 8vh;
     margin-top: 10px;
 }
 
 textarea {
     position: absolute;
-    top: 180px;
+    top: calc(130px + 8vh);
     left: 50%;
     padding: 10px;
     margin: 10px;
@@ -235,28 +257,53 @@ textarea {
     background-color: #3a3a3a;
     color: #aaaaaa;
     width: 40vw;
-    height: 200px;
+    height: calc(42vh - 20px);
+    resize: none !important;
 }
 
-.upload-video-btn {
+.file-input {
     position: absolute;
-    top: 100px;
+    top: 110px;
     left: 15%;
-    height: 25vw;
+    height: 50vh;
     width: 25vw;
     opacity: 0;
 }
 
 .input-block label {
     position: absolute;
-    top: 100px;
+    top: 110px;
     left: 15%;
-    height: 25vw;
+    height: 50vh;
     width: 25vw;
     border-radius: 10px;
     background-color: #3a3a3a;
     color: white;
     border: 1px solid #aaaaaa;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main .btn.btn-primary {
+    position: absolute;
+    top: calc(50vh + 130px);
+    left: 50%;
+    margin-left: -50px;
+    padding: 10px;
+}
+
+.progress-bar {
+    opacity: 0;
+    position: absolute;
+    top: calc(50vh + 180px);
+    left: 50%;
+    margin: 10px;
+    margin-left: -25vw;
+    width: 50vw;
+    height: 20px;
 }
 
 .upload-label:hover {
@@ -283,6 +330,8 @@ main a {
 
 footer {
     position: fixed;
+    display: flex;
+    flex-direction: row;
     top: calc(100vh - 90px);
     height: 90px;
     width: calc(100% - 20px);
@@ -293,6 +342,8 @@ footer {
     border-top: 1px solid #aaaaaa;
     border-radius: 10px;
     margin: 10px;
-    padding: 20px;
-    text-align: center;
+}
+
+footer button {
+    display: block;
 }

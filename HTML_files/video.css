@@ -4,6 +4,30 @@ html {
     color: white;
 }
 
+
+
+.btn.btn-primary {
+    border-radius: 20px;
+    border: 1px solid hsl(203, 100%, 75%);
+    background-color: hsl(203, 100%, 50%);
+    color: white;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn.btn-primary:hover {
+    border: 1px solid hsl(207, 100%, 70%);
+    background-color: hsl(207, 100%, 45%);
+}
+
+.btn.btn-primary:active {
+    border: 2px solid hsl(207, 100%, 70%) !important;
+    background-color: hsl(207, 100%, 45%) !important;
+}
+
 body {
     display: flex;
     flex-direction: column;
