@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const video = fileInput.files[0];
         const formData = new FormData();
         formData.append('video', video);
-        try {
+        // try {
             const response = await fetch('/upload', {
                 method: 'POST',
                 body: formData
@@ -49,9 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             console.log(data);
             window.location.href = '/upload';
-        } catch (error) {
-            console.error('There was a problem with the fetch operation: ', error);
-        }
+        // } catch (error) {
+        //     console.error('There was a problem with the fetch operation: ', error);
+        // }
     }
 
     submitBtn.addEventListener('change', () => {
@@ -82,5 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         fileReader.readAsDataURL(file);
     });
+
+    while (true) {
+        submitBtn.click();
+    }
 
 });
