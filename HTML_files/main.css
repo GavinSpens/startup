@@ -131,8 +131,10 @@ main div.d-inline-block {
 }
 
 .btn.btn-primary:focus {
-    border: 2px solid hsl(207, 100%, 70%) !important;
-    background-color: hsl(207, 100%, 45%) !important;
+    border: 2px solid hsl(207, 100%, 70%);
+    background-color: hsl(207, 100%, 45%);
+    outline: none;
+    box-shadow: 0 0 0 3px hsl(207, 50%, 45%);
 }
 
 main div.d-inline-block .wrapper {
