@@ -16,6 +16,7 @@
             integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
             crossorigin="anonymous"
         />
+        <script src="login.js" defer></script>
     </head>
     <body class="bg-dark text-light">
         <header class="container-fluid">
@@ -38,9 +39,12 @@
             <nav class="forgot">
                 <a href="forgot.html">Forgot Password?</a>
             </nav>
-            <div>
+            <div class="submit-div-incorrect">
                 <span>
                     <button class="btn btn-primary" type="submit">Sign in</button>
+                </span>
+                <span class="incorrect">
+                    Your password is incorrect.
                 </span>
             </div>
             <div class="registration-block">

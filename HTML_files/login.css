@@ -141,12 +141,35 @@ main a {
     background-color: hsl(207, 100%, 45%) !important;
 }
 
+.btn.btn-primary:focus {
+    border: 2px solid hsl(207, 100%, 70%) !important;
+    background-color: hsl(207, 100%, 45%) !important;
+}
+
+.submit-div-incorrect {
+    margin-bottom: 20px;
+    height: 100px;
+    width: 100vw;
+}
+
+.submit-div-incorrect span {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-div-incorrect .incorrect {
+    height: 20px;
+    width: 100vw;
+    opacity: 0;
+    color: #c76974;
+}
+
 main a:hover {
     color: white;
 }
 
 .registration-block {
-    margin: 40px;
+    margin: 0px;
 }
 
 .registration-block span {
@@ -156,7 +179,7 @@ main a:hover {
 }
 
 .btn {
-    margin: 20px;
+    margin-top: 20px;
 }
 
 form .btn{
@@ -176,4 +199,8 @@ footer {
     border-radius: 10px;
     margin: 10px;
     text-align: center;
+}
+
+.visible {
+    opacity: 1 !important;
 }
