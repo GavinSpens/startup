@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     //for testing only
-    localStorage.setItem('email-address', 'test');
-    localStorage.setItem('password', '1234');
+    // localStorage.setItem('email-address', 'test');
+    // localStorage.setItem('password', '1234');
 
     const emailInput = document.querySelector('.email-input');
     const emailAddress = localStorage.getItem('email-address');
