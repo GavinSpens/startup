@@ -47,14 +47,13 @@ header .navbar {
 .navbar .navbar-brand {
     font-size: 30px;
     font-family: fantasy;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .navbar a:hover {
     color: white;
-}
-
-.navbar form {
-    padding-right: 10px;
 }
 
 main {
@@ -118,7 +117,7 @@ nav {
 .edit-btn {
     height: 75px;
     width: 100%;
-    text-align: right;
+    margin-right: 20px;
 }
 
 .edit-btn button {
@@ -149,23 +148,6 @@ main a {
     margin: 10px;
     width: 100%;
 }
-
-footer {
-    position: fixed;
-    top: calc(100vh - 90px);
-    height: 90px;
-    width: calc(100% - 20px);
-    justify-content: center;
-    align-items: center;
-    background-color: #202020;
-    color: white;
-    border-top: 1px solid #aaaaaa;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 20px;
-    text-align: center;
-}
-
 
 .box {
     position: fixed;
@@ -226,4 +208,31 @@ footer {
     justify-content: space-between;
     align-items: center;
     margin-right: 20px;
+}
+
+.btn.btn-primary[type="verify"] {
+    width: 120px;
+}
+
+footer {
+    position: fixed;
+    top: calc(100vh - 90px);
+    height: 90px;
+    width: calc(100% - 20px);
+    justify-content: center;
+    align-items: center;
+    background-color: #202020;
+    color: white;
+    border-top: 1px solid #aaaaaa;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+footer div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
