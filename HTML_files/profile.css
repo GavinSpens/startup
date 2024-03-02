@@ -102,20 +102,7 @@ main div.d-inline-block a[type="login"] {
     bottom: 55px;
     width: 140px;
 }
-/*
-.container-fluid .wrapper .video-container {
-    position: fixed;
-    top: 100px;
-    height: calc(100vh - 145px);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 20px;
-    padding: 20px;
-    margin-left: 190px;
-    border-radius: 10px;
-    background-color: #3a3a3a;
-    width: calc(100% - 210px);
-}*/
+
 
 .container-fluid .wrapper .video-container .video-block {
     display: flex;

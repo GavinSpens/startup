@@ -115,6 +115,7 @@ main {
 }
 
 .email-password {
+    /* height: calc(100vh - 275px); */
     font-size: 20px;
     /* text-align: right; */
     width: 100%;
@@ -122,31 +123,35 @@ main {
 }
 
 .email-password .container-fluid {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-/* 
 .email-password .container-fluid span {
-    display: flex;
-    flex: .5;
-    flex-direction: row;
-    justify-content: right;
-} */
+    display: block;
+    width: 100%;
+}
+
+.email, .password, .confirm {
+    color: #c76974;
+    margin: 5px;
+    height: 20px;
+    font-size: 16px;
+}
 
 main input {
     width: 25%;
     padding: 10px;
     margin: 10px;
+    margin-bottom: 5px;
     border-radius: 20px;
     border: 1px solid #aaaaaa;
     background-color: #3a3a3a;
     color: white;
     font-size: 16px;
-    /* display: flex;
-    flex: .5;
-    flex-direction: row;
-    justify-content: left; */
-
 }
 
 main a {
