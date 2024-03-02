@@ -176,6 +176,11 @@ form .btn{
     margin: 7px;
 }
 
+.email {
+    color: #c76974;
+    font-size: 16px;
+}
+
 footer {
     position: fixed;
     top: calc(100vh - 45px);
