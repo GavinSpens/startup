@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.querySelector('.progress-bar');
     const progress = document.querySelector('.progress');
     const percent = document.querySelector('.percent');
+    const logout = document.querySelector('footer button');
+
+    submitBtn.disabled = false;
+    logout.disabled = false;
 
     uploadLabel.addEventListener('click', () => {
         fileInput.click();
@@ -31,8 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     submitBtn.addEventListener('click', () => {
-        uploadVideo();
-        updateProgressBar();
+        if (fileInput.files.length) {
+            submitBtn.disabled = true;
+            logout.disabled = true;
+            uploadVideo();
+            updateProgressBar();
+        }
     });
 
     async function uploadVideo() {
@@ -40,10 +48,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function updateProgressBar() {
+        progressBar.value = 0;
+        progressBar.style.opacity = 1;
         while (progressBar.value < 100) {
             progressBar.value += 1;
-            percent.textContent = progressBar.value + '%';
+            progress.style.width = `${progressBar.value}%`;
+            percent.textContent = `Progress: ${progressBar.value}%`;
+
             await new Promise(r => setTimeout(r, 100));
         }
+        finish();
     }
+
+    async function finish() {
+        percent.style.color = 'lightskyblue';
+        percent.textContent = 'Upload complete';
+
+        await new Promise(r => setTimeout(r, 5000));
+        progressBar.style.opacity = 0;
+        percent.style.color = 'white';
+        progressBar.value = 0;
+        progress.style.width = 0;
+        percent.textContent = 'Progress: 0%';
+        submitBtn.disabled = false;
+        logout.disabled = false;
+    }
+
+    logout.addEventListener('click', async () => {
+        localStorage.setItem('loggedIn', false);
+        window.location.href = 'index.html';
+    });
 });

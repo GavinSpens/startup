@@ -44,6 +44,12 @@ header .navbar {
     text-decoration: none;
 }
 
+.btn.btn-primary:disabled {
+    background-color: #4a4a4a;
+    border: 1px solid #aaaaaa;
+    color: #aaaaaa;
+}
+
 .navbar .navbar-brand {
     font-size: 30px;
     font-family: fantasy;
