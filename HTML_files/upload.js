@@ -32,59 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     submitBtn.addEventListener('click', () => {
         uploadVideo();
+        updateProgressBar();
     });
 
     async function uploadVideo() {
-        const video = fileInput.files[0];
-        const formData = new FormData();
-        formData.append('video', video);
-        // try {
-            const response = await fetch('/upload', {
-                method: 'POST',
-                body: formData
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            console.log(data);
-            window.location.href = '/upload';
-        // } catch (error) {
-        //     console.error('There was a problem with the fetch operation: ', error);
-        // }
+        //upload video
     }
 
-    submitBtn.addEventListener('change', () => {
-        const file = submitBtn.files[0];
-        const fileReader = new FileReader();
-        if (fileReader === undefined) {
-            return;
+    async function updateProgressBar() {
+        while (progressBar.value < 100) {
+            progressBar.value += 1;
+            percent.textContent = progressBar.value + '%';
+            await new Promise(r => setTimeout(r, 100));
         }
-        progressBar.style.opacity = 1;
-
-        fileReader.onload = () => {
-            const video = document.createElement('video');
-            video.src = fileReader.result;
-            video.onloadedmetadata = () => {
-                const duration = video.duration;
-                const interval = 1000;
-                const step = 100 / (duration / interval);
-                let percentValue = 0;
-                let intervalId = setInterval(() => {
-                    percentValue += step;
-                    progress.style.width = percentValue + '%';
-                    percent.textContent = percentValue.toFixed(0) + '%';
-                    if (percentValue >= 100) {
-                        clearInterval(intervalId);
-                    }
-                }, interval);
-            };
-        };
-        fileReader.readAsDataURL(file);
-    });
-
-    while (true) {
-        submitBtn.click();
     }
-
 });
