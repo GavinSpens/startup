@@ -6,11 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailAddress = localStorage.getItem('email-address');
     const footerDiv = document.querySelector("footer div");
     let loggedIn = JSON.parse(localStorage.getItem('loggedIn'));
+    const buttonsWrapper = document.querySelector('.wrapper.buttons-wrapper');
 
     if (loggedIn) {
         navbar.innerHTML = `<a class="navbar-brand" href="#"><img src="play.png" alt="Logo" height="50px" width="50px">Video Library</a>${emailAddress}<input type="text" class="Search" name="varSearch" placeholder="Search..."><button class="btn btn-primary" type="login" value="Login">Log Out</button>`;
         wrapper.innerHTML = '<a class="btn btn-primary" role="button" type="login">Log Out</a>';
         footerDiv.innerHTML = `<span class="text-reset">${emailAddress}</span>`
+        buttonsWrapper.innerHTML = `
+        <a class="btn btn-primary" href="#" role="button">Home</a>
+        <a class="btn btn-primary" href="#" role="button">Popular</a>
+        <a class="btn btn-primary" href="#" role="button">Recent</a>
+        <a class="btn btn-primary" href="profile.html" role="button">Profile</a>
+        `;
         
         const logOut_btn1 = document.querySelector("button.btn.btn-primary[type='login']");
         const logOut_btn2 = document.querySelector("a.btn.btn-primary[type='login']");
