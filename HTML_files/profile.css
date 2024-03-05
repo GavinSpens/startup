@@ -242,3 +242,82 @@ footer div {
     justify-content: center;
     align-items: center;
 }
+
+.box {
+    position: fixed;
+    top: 100px;
+    height: calc(100vh - 190px);
+    border-radius: 10px;
+    background-color: #3a3a3a;
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.box h1 {
+    margin-left: 20px;
+}
+
+.box .myvid-title {
+    display: flex;
+    margin-right: 50px;
+    justify-content: space-between;
+}
+
+.top-of-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.container-fluid .wrapper .video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    width: calc(100% - 20px);
+}
+
+.container-fluid .wrapper .video-container .video-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 10px;
+}
+
+nav {
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    border-radius: 7.5px;
+    margin: 10px;
+}
+
+.profile-img img {
+    border-radius: 100px;
+    margin: 20px;
+    float: left;
+}
+
+p {
+    margin: 20px;
+}
+
+main div.video-block a:hover {
+    color: white;
+}
+
+main a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+    width: 100%;
+}
