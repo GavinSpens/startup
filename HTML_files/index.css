@@ -111,7 +111,7 @@ main div.d-inline-block {
 .btn.btn-primary {
     border-radius: 20px;
     border: 1px solid hsl(203, 100%, 75%);
-    background-color: hsl(203, 100%, 50%);
+    background-color: #009dff;
     color: white;
     width: 110px;
     height: 40px;

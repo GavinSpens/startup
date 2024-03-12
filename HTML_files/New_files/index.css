@@ -1,0 +1,38 @@
+header nav {
+    height: 90px;
+}
+
+nav input {
+    width: 25%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid #aaaaaa;
+    background-color: #3a3a3a;
+    color: white;
+}
+
+nav input:focus {
+    border: 2px solid #cacaca;
+}
+
+.left-buttons {
+    position:absolute;
+    left: 10px;
+    top: 100px;
+    width: 160px;
+    height: calc(100vh - 145px);
+}
+
+.video-container {
+    position: absolute;
+    left: 180px;
+    top: 100px;
+    width: calc(100% - 190px);
+    height: calc(100vh - 145px);
+    overflow-y: auto;
+}
+
+.video-block {
+    height: 140px;
+}
