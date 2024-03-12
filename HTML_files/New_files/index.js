@@ -18,19 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
         </a>
         ${emailAddress}
         <input type="text" class="Search" placeholder="Search...">
+        <a class="lightskyblue link" href="https://github.com/GavinSpens/startup">GitHub Repository</a>
         <button class="btn blue" id="LogOut">Log Out</button>
         `;
         wrapper.innerHTML = `
-        <button class="btn blue" id="LogOut2">Log Out</button>
+        <a class="btn blue" id="LogOut2">Log Out</a>
         `;
         footer.innerHTML = `
-        ${emailAddress}
+        <span class="container-fluid gray dark">${emailAddress}</span>
         `;
         buttonsWrapper.innerHTML = `
-        <button class="btn blue" href="#" id="Home">Home</button>
-        <button class="btn gray" href="#" id="Popular">Popular</button>
-        <button class="btn gray" href="#" id="Recent">Recent</button>
-        <button class="btn blue" href="profile.html" id="Profile">Profile</button>
+        <a class="btn blue" href="#" id="Home">Home</a>
+        <a class="btn gray" href="#" id="Popular">Popular</a>
+        <a class="btn gray" href="#" id="Recent">Recent</a>
+        <a class="btn blue" href="profile.html" id="Profile">Profile</a>
         `;
         
         const logOut_btn1 = document.getElementById("LogOut");

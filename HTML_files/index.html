@@ -5,9 +5,10 @@
         <!-- Tell browsers not to scale the viewport automatically -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Video Library</title>
-        <link rel="icon" href="***some_icon***" />
+        <link rel="icon" href="play_mark2.png" />
 
         <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="main.css" />
 
         <!-- Include bootstrap CSS framework -->
         <link
@@ -18,133 +19,223 @@
         />
         <script src="index.js" defer></script>
     </head>
-    <body class="bg-dark text-light">
-        <header class="container-fluid">
-            <nav class="container-fluid navbar fixed-top navbar-dark"> 
-                <a class="navbar-brand" href="#">
-                    <img src="play.png" alt="Logo" height="50px" width="50px">
+    <body class="medium-dark text-light">
+        <header>
+            <nav class="round row-space-around font-20 dark border-bottom">
+                <a class="lightskyblue link" href="#">
+                    <img src="play_mark2.png" alt="Logo" height="50px" width="50px">
                     Video Library
                 </a>
                 Gavin Spens
-                <input type="text" class="Search" name="varSearch" placeholder="Search...">
-                <a href="https://github.com/GavinSpens/startup">GitHub Repository</a>
-                <button class="btn btn-primary" type="login" value="Login" >Login</button>
+                <input type="text" class="Search" placeholder="Search...">
+                <a class="lightskyblue link" href="https://github.com/GavinSpens/startup">GitHub Repository</a>
+                <button class="btn blue" id="Login">Login</button>
             </nav>
         </header>
         <main class="container-fluid">
-            <div class="wrapper">
-                <div class="video-container">
-                    <div class="video-block">
-                        <span>
-                            <a href="video.html">
-                                <img src="Video_files\Thumbnails\video.jpg" alt="________" height="100px" width=auto>
-                            </a>
-                        </span>
-                        <span>
-                            <a href="video.html">***____Video____***</a>
-                        </span>
-                    </div>
-                    <div class="video-block">
-                        <span>
-                            <a href="video.html">
-                                <img src="Video_files\Thumbnails\video.jpg" alt="________" height="100px" width=auto>
-                            </a>
-                        </span>
-                        <span>
-                            <a href="video.html">***____Video____***</a>
-                        </span>
-                    </div>
-                    <div class="video-block">
-                        <span>
-                            <a href="video.html">
-                                <img src="Video_files\Thumbnails\video.jpg" alt="________" height="100px" width=auto>
-                            </a>
-                        </span>
-                        <span>
-                            <a href="video.html">***____Video____***</a>
-                        </span>
-                    </div>
-                    <div class="video-block">
-                        <span>
-                            <a href="video.html">
-                                <img src="Video_files\Thumbnails\video.jpg" alt="________" height="100px" width=auto>
-                            </a>
-                        </span>
-                        <span>
-                            <a href="video.html">***____Video____***</a>
-                        </span>
-                    </div>
-                    <div class="video-block">
-                        <span>
-                            <a href="video.html">
-                                <img src="Video_files\Thumbnails\video.jpg" alt="________" height="100px" width=auto>
-                            </a>
-                        </span>
-                        <span>
-                            <a href="video.html">***____Video____***</a>
-                        </span>
-                    </div>
-                    <div class="video-block">
-                        <span>
-                            <a href="video.html">
-                                <img src="Video_files\Thumbnails\video.jpg" alt="________" height="100px" width=auto>
-                            </a>
-                        </span>
-                        <span>
-                            <a href="video.html">***____Video____***</a>
-                        </span>
-                    </div>
-                    <div class="video-block">
-                        <span>
-                            <a href="video.html">
-                                <img src="Video_files\Thumbnails\video.jpg" alt="________" height="100px" width=auto>
-                            </a>
-                        </span>
-                        <span>
-                            <a href="video.html">***____Video____***</a>
-                        </span>
-                    </div>
-                    <div class="video-block">
-                        <span>
-                            <a href="video.html">
-                                <img src="Video_files\Thumbnails\video.jpg" alt="________" height="100px" width=auto>
-                            </a>
-                        </span>
-                        <span>
-                            <a href="video.html">***____Video____***</a>
-                        </span>
-                    </div>
-                    <div class="video-block">
-                        <span>
-                            <a href="video.html">
-                                <img src="Video_files\Thumbnails\video.jpg" alt="________" height="100px" width=auto>
-                            </a>
-                        </span>
-                        <span>
-                            <a href="video.html">***____Video____***</a>
-                        </span>
-                    </div>
+            <div class="video-container medium rounder grid">
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
                 </div>
 
 
-                <div class="d-inline-block" style="width: 180px">
-                    <div>
-                        <span class="wrapper buttons-wrapper">
-                            <a class="btn btn-primary" href="#" role="button">Home</a>
-                            <a class="btn btn-primary" href="#" role="button">Popular</a>
-                            <a class="btn btn-primary" href="#" role="button">Recent</a>
-                        </span>
-                        <span class="wrapper login-button">
-                            <a class="btn btn-primary" href="login.html" role="button" type="login">Login</a>
-                        </span>
-                    </div>
+                <!-- <!--  -->
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+                <div class="video-block column-space-around">
+                    <span>
+                        <a href="video.html">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
+                        </a>
+                    </span>
+                    <span>
+                        <a class="lightskyblue link" href="video.html">Video Title</a>
+                    </span>
+                </div>
+            <!-- -->
+
+
+
+            </div>
+            <div class="left-buttons column-space-between medium rounder">
+                <div class="column-space-between" style="padding:0">
+                    <button class="btn blue" href="#">Home</button>
+                    <button class="btn gray" href="#">Popular</button>
+                    <button class="btn gray" href="#">Recent</button>
+                </div>
+                <div class="centered">
+                    <button class="btn blue" id="Login2" href="login.html">Login</button>
                 </div>
             </div>
-        </main>
-        <footer class="bg-dark text-white-50">
-            <div class="container-fluid">
-                <span class="text-reset">Gavin Spens</span>
-            </div>
-        </footer>
-    </body>
+        </div>
+    </main>
+    <footer class="container-fluid gray dark">
+        Gavin Spens
+    </footer>
+</body>
 </html>
