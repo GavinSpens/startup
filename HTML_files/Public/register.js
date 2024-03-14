@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('email-address', emailInput.value);
         localStorage.setItem('password', password.value);
         localStorage.setItem('loggedIn', true);
-        window.location.href = 'index.html';
+        window.location.href = 'main.html';
     }
 
     let passwordconditions = () => {

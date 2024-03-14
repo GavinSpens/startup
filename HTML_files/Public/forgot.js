@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         3000
         );
         setTimeout( () => {
-            window.location.href = 'index.html';
+            window.location.href = 'main.html';
         },
         4000
         );

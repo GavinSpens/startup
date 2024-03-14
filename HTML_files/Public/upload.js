@@ -76,6 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     logout.addEventListener('click', async () => {
         localStorage.setItem('loggedIn', false);
-        window.location.href = 'index.html';
+        window.location.href = 'main.html';
     });
 });

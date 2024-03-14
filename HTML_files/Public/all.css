@@ -27,6 +27,14 @@
 .lightskyblue {
     color: lightskyblue;
 }
+
+.red {
+    color: #c76974;
+}
+
+.hidden {
+    display: none;
+}
     /*OTHER*/
 .link {
     text-decoration: none;
@@ -61,6 +69,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
 .row-space-between {
@@ -68,7 +77,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding-left:10px;
+    padding-right: 10px;
+    width: 100%;
 }
 
 .column-space-around {
@@ -83,7 +94,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .grid {
@@ -175,6 +187,13 @@ button.gray:focus {
     outline: none;
     box-shadow: 0 0 0 3px #3a3a3a;
 }
+
+
+/*HEADER*/
+header nav {
+    height: 90px;
+}
+
 
 
 /*FOOTER*/

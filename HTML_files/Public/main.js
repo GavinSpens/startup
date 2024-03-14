@@ -18,20 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
         </a>
         ${emailAddress}
         <input type="text" class="Search" placeholder="Search...">
-        <a class="lightskyblue link" href="https://github.com/GavinSpens/startup">GitHub Repository</a>
         <button class="btn blue" id="LogOut">Log Out</button>
         `;
         wrapper.innerHTML = `
-        <a class="btn blue" id="LogOut2">Log Out</a>
+        <button class="btn blue" id="LogOut2">Log Out</button>
         `;
         footer.innerHTML = `
-        <span class="container-fluid gray dark">${emailAddress}</span>
+        ${emailAddress}
         `;
         buttonsWrapper.innerHTML = `
-        <a class="btn blue" href="#" id="Home">Home</a>
-        <a class="btn gray" href="#" id="Popular">Popular</a>
-        <a class="btn gray" href="#" id="Recent">Recent</a>
-        <a class="btn blue" href="profile.html" id="Profile">Profile</a>
+        <button class="btn blue" href="#" id="Home">Home</button>
+        <button class="btn gray" href="#" id="Popular">Popular</button>
+        <button class="btn gray" href="#" id="Recent">Recent</button>
+        <button class="btn blue" href="profile.html" id="Profile">Profile</button>
         `;
         
         const logOut_btn1 = document.getElementById("LogOut");
@@ -54,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // navbar.innerHTML = `<a class="navbar-brand" href="#"><img src="play_mark2.png" alt="Logo" height="50px" width="50px">Video Library</a>Gavin Spens<input type="text" class="Search" name="varSearch" placeholder="Search..."><a href="https://github.com/GavinSpens/startup">GitHub Repository</a><button class="btn btn-primary" type="login" value="Login" >Login</button>`;
         // wrapper.innerHTML = '<a class="btn btn-primary" href="login.html" role="button" type="login">Login</a>';
         // footer.innerHTML = `<span class="text-reset">Gavin Spens</span>`;
-        window.location.href = 'index.html';
+        window.location.href = 'main.html';
     }
 
     logIn_btn1.addEventListener('click', () => {

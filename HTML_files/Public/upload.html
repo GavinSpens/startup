@@ -4,10 +4,10 @@
         <meta charset="UTF-8" />
         <!-- Tell browsers not to scale the viewport automatically -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register</title>
+        <title>Upload Video</title>
         <link rel="icon" href="***some_icon***" />
 
-        <link rel="stylesheet" href="register.css" />
+        <link rel="stylesheet" href="upload.css" />
 
         <!-- Include bootstrap CSS framework -->
         <link
@@ -16,46 +16,46 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
         crossorigin="anonymous"
         />
-        <script src="register.js"></script>
+        <script src="upload.js" defer></script>
     </head>
     <body class="bg-dark text-light">
         <header class="container-fluid">
             <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="main.html">
                     <img src="play_mark2.png" alt="Logo" height="50px" width="50px">
                     Video Library
                 </a>
                 <span>
-                    <h1>Register</h1>
+                    <h1>Upload Video</h1>
                 </span>
             </nav>
         </header>
         <main class="container-fluid">
-            <div class="email-password">
-                <span class="container-fluid">
-                    <span>Email address: <input type="text" name="varEmail" placeholder="Your email here..."></span>
-                    <span class="email"></span>
+            <div class="input-block">
+                <span>
+                    <input class="file-input" type="file" name="varVideo" accept=".mp4">
+                    <label class="upload-label" for="varVideo">Drag file here or browse for file</label>
                 </span>
-                <span class="container-fluid">
-                    <span>Create Password: <input type="text" name="varPassword" placeholder="Password..."></span>
-                    <span class="password"></span>
-                </span>
-                <span class="container-fluid">
-                    <span>Confirm Password: <input type="text" name="varConfirm" placeholder="Retype Password..."></span>
-                    <span class="confirm"></span>
+                <span>
+                    <input type="text" name="varTitle" placeholder="Title...">
+                    <textarea name="varDescription" placeholder="Description..."></textarea>
                 </span>
             </div>
             <div>
                 <span>
-                    <button class="btn btn-primary" type="cancel">Cancel</button>
+                    <button class="btn btn-primary" type="submit">Upload</button>
                 </span>
-                <span>
-                    <button class="btn btn-primary" type="register">Register</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress">
+                </div>
+                <span class="percent">
+                    Progress: 0%
                 </span>
             </div>
         </main>
         <footer>
-
+                <button class="btn btn-primary" type="button">Sign Out</button>
         </footer>
     </body>
 </html>

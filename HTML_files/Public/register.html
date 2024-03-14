@@ -4,10 +4,10 @@
         <meta charset="UTF-8" />
         <!-- Tell browsers not to scale the viewport automatically -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Reset Password</title>
+        <title>Register</title>
         <link rel="icon" href="***some_icon***" />
 
-        <link rel="stylesheet" href="forgot.css" />
+        <link rel="stylesheet" href="register.css" />
 
         <!-- Include bootstrap CSS framework -->
         <link
@@ -16,33 +16,41 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
         crossorigin="anonymous"
         />
-        <script src="forgot.js"></script>
+        <script src="register.js"></script>
     </head>
     <body class="bg-dark text-light">
         <header class="container-fluid">
             <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="main.html">
                     <img src="play_mark2.png" alt="Logo" height="50px" width="50px">
                     Video Library
                 </a>
                 <span>
-                    <h1>Forgot Password?</h1>
+                    <h1>Register</h1>
                 </span>
             </nav>
         </header>
         <main class="container-fluid">
             <div class="email-password">
                 <span class="container-fluid">
-                    Email address: <input type="text" name="varEmail" placeholder="Your email here...">
+                    <span>Email address: <input type="text" name="varEmail" placeholder="Your email here..."></span>
+                    <span class="email"></span>
                 </span>
-                <span class="email"></span>
+                <span class="container-fluid">
+                    <span>Create Password: <input type="text" name="varPassword" placeholder="Password..."></span>
+                    <span class="password"></span>
+                </span>
+                <span class="container-fluid">
+                    <span>Confirm Password: <input type="text" name="varConfirm" placeholder="Retype Password..."></span>
+                    <span class="confirm"></span>
+                </span>
             </div>
             <div>
                 <span>
                     <button class="btn btn-primary" type="cancel">Cancel</button>
                 </span>
                 <span>
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-primary" type="register">Register</button>
                 </span>
             </div>
         </main>
