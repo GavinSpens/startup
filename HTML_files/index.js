@@ -25,6 +25,12 @@ app.use(`/api`, apiRouter);
 //   res.send(scores);
 // });
 
+//getEmail
+apiRouter.get('/email', (_req, res) => {
+  //modify this to get the email from the database
+  res.send(email);
+});
+
 // GetProfileDescription
 apiRouter.get('/profile', (_req, res) => {
   res.send(profile);
