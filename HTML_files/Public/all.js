@@ -6,7 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let password = '';
     let hostname = '';    
     
-    function Mongo() {
+    LoginButton.addEventListener('click', () => {
+        location.window.href = '/login';
+    });
+
+    ProfileButton.addEventListener('click', () => {
+        location.window.href = '/profile';
+    });
+
+    function Mongo (f) {
         const { MongoClient } = require('mongodb');
         const url = `mongodb+srv://${userName}:${password}@${hostname}`;
         const client = new MongoClient(url);
@@ -14,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const collection = client.db("test").collection("devices");
 
             // ... perform actions on the DB collection
+            f();
 
             client.close();
         });
