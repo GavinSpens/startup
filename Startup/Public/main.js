@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (loggedIn) {
         navbar.innerHTML = `
-        <a class="lightskyblue link" href="#">
+        <a class="white link" href="#">
             <img src="play_mark2.png" alt="Logo" height="50px" width="50px">
             Video Library
         </a>
