@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const db_js = require('../database.js');
-    const LoginButton = document.getElementById('Login');
-    const ProfileButton = document.getElementById('Profile');
-    const SubmitButton = document.getElementById('SubmitLogin');
+    const LoginButton = document.getElementById('login');
+    const ProfileButton = document.getElementById('profile');
+    const SubmitButton = document.getElementById('submitLogin');
     const emailInput = document.getElementById('email-input');
     const passwordInput = document.getElementById('password-input');
     

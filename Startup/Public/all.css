@@ -233,3 +233,9 @@ footer {
 ::-webkit-scrollbar-thumb:active {
     background-color: #2a2a2a;
 }
+
+
+/*OTHER*/
+.header_wide {
+    width: 250px;
+}

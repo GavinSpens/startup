@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const editBtn = document.querySelector('.edit-btn');
+    const editBtn = document.getElementById('editProfileBtn');
     const verified = JSON.parse(localStorage.getItem('verified'));
     const logoutBtn = document.querySelector('.btn.btn-primary[type="Sign Out"]');
     const verifyBtn = document.querySelector('.btn.btn-primary[type="Verify"]');
