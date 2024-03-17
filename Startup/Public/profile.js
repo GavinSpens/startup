@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const editBtn = document.getElementById('editProfileBtn');
+    const pfp = document.getElementById('pfp');
     const verified = JSON.parse(localStorage.getItem('verified'));
     const logoutBtn = document.querySelector('.btn.btn-primary[type="Sign Out"]');
     const verifyBtn = document.querySelector('.btn.btn-primary[type="Verify"]');
@@ -18,6 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
             makeVerified();
         }, 5000);
     });
+
+    editBtn.addEventListener('click', () => {
+        updatePfp();
+    });
+
+    async function updatePfp() {
+        try {
+            const response = await fetch('https://picsum.photos/200');
+            const reroutedUrl = response.url;
+            pfp.src = reroutedUrl;
+            console.log(reroutedUrl);
+        } catch (error) {
+            console.error('Error fetching the rerouted URL:', error);
+        }
+    }
+
+    updatePfp();
 
     function makeVerified() {
         verifyBtn.innerHTML = 'Verified';
