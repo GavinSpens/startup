@@ -5,9 +5,10 @@
         <!-- Tell browsers not to scale the viewport automatically -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Video_test</title>
-        <link rel="icon" href="***some_icon***" />
+        <link rel="icon" href="./play_mark2.png" />
 
-        <link rel="stylesheet" href="video.css" />
+        <!-- <link rel="stylesheet" href="video.css" /> -->
+        <link rel="stylesheet" href="all.css" />
 
         <!-- Include bootstrap CSS framework -->
         <link
@@ -16,42 +17,36 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
         crossorigin="anonymous"
         />
+        <script src="all.js" defer></script>
+        <script src="video.js" defer></script>
     </head>
-    <body class="bg-dark text-light">
-        <header class="container-fluid">
-            <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand" href="main.html"><img src="play_mark2.png" alt="Logo" height="50px" width="50px">Video Library</a>
-                <h1>Video</h1>
-                <input type="text" name="varSearch" placeholder="Search...">
-                <form action="login.html">
-                        <button class="btn btn-primary" type="login" value="Login">Login</button>
-                </form>
+    <body class="medium-dark text-light">
+        <header>
+            <nav class="round row-space-between font-20 dark border-bottom">
+                <a class="link left" href="index.html">
+                    <img src="play_mark2.png" alt="Logo" height="50px" width="50px">
+                    Video Library
+                </a>
+                <h1 id="videoTitle">VideoTitle</h1>
+                <input class="input" type="text" name="varSearch" placeholder="Search...">
+                <button class="btn blue" id="login">Login</button>
             </nav>
         </header>
-        <main class="container-fluid">
-            <div class="wrapper">
-                <div class="d-inline-block" style="width: 180px">
-                    <div>
-                        <span class="wrapper">
-                            <a class="btn btn-primary" href="index.html" role="button">Home</a>
-                            <a class="btn btn-primary" href="index.html" role="button">Popular</a>
-                            <a class="btn btn-primary" href="index.html" role="button">Recent</a>
-                            <a class="btn btn-primary" href="profile.html" role="button">Profile</a>
-                        </span>
-                        <span class="wrapper">
-                            <a class="btn btn-primary" href="login.html" role="button" type="login">Login</a>
-                        </span>
-                    </div>
+        <main class="row-space-between">
+            <div class="column-space-between medium rounder" style="width: 160px; height:calc(100vh - 145px); margin-top:10px;">
+                <div class="column-space-around">
+                    <button class="btn blue" href="index.html" id="home">Home</button>
+                    <button class="btn gray" href="index.html" id="popular">Popular</button>
+                    <button class="btn gray" href="index.html" id="recent">Recent</button>
+                    <button class="btn gray" href="profile.html" id="profileBtn">Profile</button>
                 </div>
-                <div class="video-container">
-                    <div class="video-block">
-                        <span>
-                            <img src="Video_files\Thumbnails\video.jpg" alt="________" height="350px" width=auto>
-                        </span>
-                        <span>
-                            ***____Video____***
-                        </span>
-                    </div>
+                <button class="btn blue" href="login.html" id="login" type="login2">Login</button>
+            </div>
+            <div class="medium rounder row-space-between" style="width:calc(100vw - 200px); height:calc(100vh - 145px); margin-top:10px;">
+                <img class="rounder" src="Video_files\Thumbnails\video.jpg" alt="________" style="height:calc(100vh - 165px); margin-left:0;" width=auto>
+                <div class="column-space-around medium rounder" style="height:calc(100vh - 145px);">
+                    <span id="video_title_idk_something">Video Title<img class="rounder margin-10" src="Video_files\Thumbnails\video.jpg" alt="________" height="150px" width=auto></span>
+                    <span id="video_title_idk">Video Title<img class="rounder margin-10" src="Video_files\Thumbnails\video.jpg" alt="________" height="150px" width=auto></span>
                 </div>
             </div>
         </main>
