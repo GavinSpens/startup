@@ -120,6 +120,16 @@
     align-items: center;
 }
 
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
 .right {
     display: flex;
     justify-content: flex-end;
@@ -258,6 +268,43 @@ footer {
 
 ::-webkit-scrollbar-thumb:active {
     background-color: #2a2a2a;
+}
+
+
+/*UPLOAD*/
+.file-input {
+    position: absolute;
+    top: 110px;
+    left: 15%;
+    height: 50vh;
+    width: 25vw;
+    opacity: 0;
+}
+
+.upload-label {
+    position: absolute;
+    top: 110px;
+    left: 15%;
+    height: 50vh;
+    width: 25vw;
+    border-radius: 10px;
+    background-color: #3a3a3a;
+    color: white;
+    border: 1px solid #aaaaaa;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-label:hover {
+    cursor: pointer;
+    background-color: #4a4a4a;
+}
+
+.upload-label.dragover {
+    border: 2px dashed #aaaaaa;
 }
 
 

@@ -5,9 +5,9 @@
         <!-- Tell browsers not to scale the viewport automatically -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Upload Video</title>
-        <link rel="icon" href="***some_icon***" />
+        <link rel="icon" href="./play_mark2.png" />
 
-        <link rel="stylesheet" href="upload.css" />
+        <link rel="stylesheet" href="all.css" />
 
         <!-- Include bootstrap CSS framework -->
         <link
@@ -17,45 +17,37 @@
         crossorigin="anonymous"
         />
         <script src="upload.js" defer></script>
+        <script src="all.js" defer></script>
     </head>
-    <body class="bg-dark text-light">
-        <header class="container-fluid">
-            <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand" href="main.html">
+    <body class="medium-dark text-light">
+        <header>
+            <nav class="round row-space-between font-20 dark border-bottom">
+                <a class="link header_wide left" href="index.html">
                     <img src="play_mark2.png" alt="Logo" height="50px" width="50px">
                     Video Library
                 </a>
-                <span>
-                    <h1>Upload Video</h1>
-                </span>
+                Upload Video
+                <span class="header_wide"></span>
             </nav>
         </header>
-        <main class="container-fluid">
-            <div class="input-block">
-                <span>
-                    <input class="file-input" type="file" name="varVideo" accept=".mp4">
-                    <label class="upload-label" for="varVideo">Drag file here or browse for file</label>
-                </span>
-                <span>
-                    <input type="text" name="varTitle" placeholder="Title...">
-                    <textarea name="varDescription" placeholder="Description..."></textarea>
-                </span>
+        <main class="container-fluid col">
+            <input class="file-input" type="file" name="varVideo" accept=".mp4">
+            <label class="upload-label" for="varVideo">Drag file here or browse for file</label>
+            <div class="col centered" style="margin-left:50%; width:50vw; height:fit-content;">
+                <input class="input" type="text" id="title" placeholder="Title...">
+                <textarea class="input" rows=8 style="resize:none;" id="description" placeholder="Description..."></textarea>
             </div>
-            <div>
-                <span>
-                    <button class="btn btn-primary" type="submit">Upload</button>
-                </span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress">
+            <button class="btn blue" style="align-self:center;" id="upload">Upload</button>
+            <div class="dark rounder" style="position:fixed; bottom:calc(20vh - 3px); width:50%; left:25%; width:50%; height:25px; border: 1px solid #7a7a7a;">
+                <div class="medium rounder" id="progress" style="position:fixed; left:25vw; bottom:calc(20vh - 3px); height:25px; width:33vw; border:1px solid #9a9a9a;">
                 </div>
-                <span class="percent">
+                <span class="centered" id="percent" style="position:fixed; bottom:20vh; left:25%; width:50%;">
                     Progress: 0%
                 </span>
             </div>
         </main>
         <footer>
-                <button class="btn btn-primary" type="button">Sign Out</button>
+                <button class="btn blue" id="login">Sign Out</button>
         </footer>
     </body>
 </html>
