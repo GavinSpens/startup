@@ -5,9 +5,9 @@
         <!-- Tell browsers not to scale the viewport automatically -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Video Library</title>
-        <link rel="icon" href="play_mark2.png" />
+        <link rel="icon" href="./play_mark2.png" />
 
-        <link rel="stylesheet" href="login.css" />
+        <!-- <link rel="stylesheet" href="login.css" /> -->
         <link rel="stylesheet" href="all.css" />
 
         <!-- Include bootstrap CSS framework -->
@@ -18,35 +18,31 @@
         crossorigin="anonymous"
         />
         <script src="login.js" defer></script>
+        <script src="all.js" defer></script>
     </head>
     <body class="medium-dark text-light">
         <header>
             <nav class="round row-space-between font-20 dark border-bottom">
-                <a class="white link" href="index.html">
+                <a class="link font-30 header_wide left" href="index.html">
                     <img src="play_mark2.png" alt="Logo" height="50px" width="50px">
                     Video Library
                 </a>
                 Login
-                <span style="padding-left:200px"></span>
+                <span class="header_wide"></span>
             </nav>
         </header>
-        <main class="container-fluid column-space-around">
-            <div class="email-password container-fluid column-space-between">
-                <span class="row-space-between">
-                    Email address: <input class="email-input" type="text" id="email-input" placeholder="Your email here...">
-                </span>
-                <span class="row-space-between">
-                    Password: <input class="password-input" type="password" id="password-input" placeholder="Password...">
-                </span>
-            </div>
-            <!-- <a class="white link" href="forgot.html">Forgot Password?</a> -->
+        <main class="column-space-around margin-20" style="height:calc(100vh - 200px);">
+            <span>Email address: <input class="input" type="text" id="email-input" placeholder="Your email here..."></span>
+            <span>Password: <input class="password input" type="text" placeholder="Password..."></span>
+            <span class="hidden red" id="message">Your email or password is incorrect.</span>
             <button class="btn blue" id="submitLogin">Login</button>
-            <span class="incorrect hidden red">Your password is incorrect.</span>
-            Don't have an account?
-            <button class="btn gray" id="register">Register</button>
+            <div class="column-space-between">
+                Don't have an account?
+                <button class="btn gray margin-20" id="register">Register</button>
+            </div>
         </main>
         <footer>
-        
+
         </footer>
     </body>
 </html>
