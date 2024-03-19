@@ -266,6 +266,22 @@ footer {
     width: 250px;
 }
 
+.height-20 {
+    height: 20px;
+}
+
+.input {
+    width: 25vw;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    border: 1px solid #aaaaaa;
+    background-color: #3a3a3a;
+    color: white;
+    font-size: 16px;
+}
+
 .margin-10 {
     margin: 10px;
 }

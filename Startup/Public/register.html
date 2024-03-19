@@ -5,9 +5,9 @@
         <!-- Tell browsers not to scale the viewport automatically -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Register</title>
-        <link rel="icon" href="***some_icon***" />
+        <link rel="icon" href="./play_mark2.png" />
 
-        <link rel="stylesheet" href="register.css" />
+        <link rel="stylesheet" href="all.css" />
 
         <!-- Include bootstrap CSS framework -->
         <link
@@ -18,40 +18,30 @@
         />
         <script src="register.js"></script>
     </head>
-    <body class="bg-dark text-light">
-        <header class="container-fluid">
-            <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand" href="main.html">
+    <body class="medium-dark text-light">
+        <header>
+            <nav class="round row-space-between font-20 dark border-bottom">
+                <a class="link header_wide left" href="index.html">
                     <img src="play_mark2.png" alt="Logo" height="50px" width="50px">
                     Video Library
                 </a>
-                <span>
-                    <h1>Register</h1>
-                </span>
+                Register
+                <span class="header_wide"></span>
             </nav>
         </header>
-        <main class="container-fluid">
-            <div class="email-password">
-                <span class="container-fluid">
-                    <span>Email address: <input type="text" name="varEmail" placeholder="Your email here..."></span>
-                    <span class="email"></span>
-                </span>
-                <span class="container-fluid">
-                    <span>Create Password: <input type="text" name="varPassword" placeholder="Password..."></span>
-                    <span class="password"></span>
-                </span>
-                <span class="container-fluid">
-                    <span>Confirm Password: <input type="text" name="varConfirm" placeholder="Retype Password..."></span>
-                    <span class="confirm"></span>
-                </span>
-            </div>
-            <div>
-                <span>
-                    <button class="btn btn-primary" type="cancel">Cancel</button>
-                </span>
-                <span>
-                    <button class="btn btn-primary" type="register">Register</button>
-                </span>
+        <main class="column-space-around">
+            <span>Email address: <input class="input" type="text" placeholder="Your email here..."></span>
+            <span class="height-20" id="email">
+            </span>
+            <span>Create Password: <input class="input" type="text" placeholder="Password..."></span>
+            <span class="height-20" id="password">
+            </span>
+            <span>Confirm Password: <input class="input" type="text" placeholder="Retype Password..."></span>
+            <span class="height-20" id="confirm">
+            </span>
+            <div class="row-space-between margin-20" style="width: 25vw">
+                <button class="btn gray" type="cancel">Cancel</button>
+                <button class="btn blue" type="register">Register</button>
             </div>
         </main>
         <footer>
