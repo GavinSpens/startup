@@ -111,6 +111,10 @@
     align-items: center;
 }
 
+p {
+    padding: 10px;
+}
+
 
 /*BACKGROUNDS*/
 .dark {
