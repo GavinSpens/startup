@@ -50,9 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function logOut() {
         localStorage.setItem('loggedIn', false);
-        // navbar.innerHTML = `<a class="navbar-brand" href="#"><img src="play_mark2.png" alt="Logo" height="50px" width="50px">Video Library</a>Gavin Spens<input type="text" class="Search" name="varSearch" placeholder="Search..."><a href="https://github.com/GavinSpens/startup">GitHub Repository</a><button class="btn btn-primary" type="login" value="Login" >Login</button>`;
-        // wrapper.innerHTML = '<a class="btn btn-primary" href="login.html" role="button" type="login">Login</a>';
-        // footer.innerHTML = `<span class="text-reset">Gavin Spens</span>`;
         window.location.href = 'main.html';
     }
 

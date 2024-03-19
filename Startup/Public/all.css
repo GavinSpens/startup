@@ -38,10 +38,11 @@
     /*OTHER*/
 .link {
     text-decoration: none;
+    color: lightskyblue;
 }
 
 .link:hover {
-    color: lightskyblue;
+    color: white;
 }
 
 
