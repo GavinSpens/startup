@@ -5,9 +5,9 @@
         <!-- Tell browsers not to scale the viewport automatically -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Video Library</title>
-        <link rel="icon" href="play_mark2.png" />
+        <link rel="icon" href="./play_mark2.png" />
 
-        <link rel="stylesheet" href="main.css" />
+        <!-- <link rel="stylesheet" href="main.css" /> -->
         <link rel="stylesheet" href="all.css" />
 
         <!-- Include bootstrap CSS framework -->
@@ -18,221 +18,181 @@
         crossorigin="anonymous"
         />
         <script src="main.js" defer></script>
+        <script src="all.js" defer></script>
     </head>
+
+
     <body class="medium-dark text-light">
         <header>
             <nav class="round row-space-between font-20 dark border-bottom">
-                <a class="link header_wide" href="#">
+                <a class="link font-30 left" href="#">
                     <img src="play_mark2.png" alt="Logo" height="50px" width="50px">
                     Video Library
                 </a>
-                <span class="scrolling row-space-around">
-                    Gavin Spens
-                    <input type="text" class="Search" placeholder="Search...">
-                    <a class="link" href="https://github.com/GavinSpens/startup">GitHub Repository</a>
-                </span>
-                <button class="btn blue" id="login">Login</button>
+                Gavin Spens
+                <input class="input" type="text" name="varSearch" placeholder="Search...">
+                <a class="link" href="https://github.com/GavinSpens/startup">GitHub Repository</a>
+                <button class="btn blue" href="login.html" id="login">Login</button>
             </nav>
         </header>
-        <main class="container-fluid">
-            <div class="video-container medium rounder grid">
-                <div class="video-block column-space-around">
+        <main class="row-space-between">
+            <div class="column-space-between medium rounder" style="width: 160px; height:calc(100vh - 145px); margin-top:10px;">
+                <div class="column-space-around">
+                    <button class="btn blue" href="index.html" id="home">Home</button>
+                    <button class="btn gray" href="index.html" id="popular">Popular</button>
+                    <button class="btn gray" href="index.html" id="recent">Recent</button>
+                    <button class="btn gray" href="profile.html" id="profileBtn">Profile</button>
+                </div>
+                <button class="btn blue" href="login.html" id="login2">Login</button>
+            </div>
+            <div class="medium rounder grid font-20" style="width:calc(100vw - 200px); height:calc(100vh - 145px); margin-top:10px; overflow-y:auto;">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
 
 
                 <!-- <!--  -->
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
+                <div class="column-space-around" style="height:fit-content">
                     <span>
                         <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
+                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="150px" width="auto" style="margin-top:10px;">
                         </a>
                     </span>
                     <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
+                        <a class="link" style="color:white;" onMouseOver="this.style.color='lightskyblue'" onMouseOut="this.style.color='white'" href="video.html">Video Title</a>
                     </span>
                 </div>
-                <div class="video-block column-space-around">
-                    <span>
-                        <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
-                        </a>
-                    </span>
-                    <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
-                    </span>
-                </div>
-                <div class="video-block column-space-around">
-                    <span>
-                        <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
-                        </a>
-                    </span>
-                    <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
-                    </span>
-                </div>
-                <div class="video-block column-space-around">
-                    <span>
-                        <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="auto">
-                        </a>
-                    </span>
-                    <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
-                    </span>
-                </div>
-                <div class="video-block column-space-around">
-                    <span>
-                        <a href="video.html">
-                            <img src="Video_files\Thumbnails\video.jpg" class="rounder" alt="Video" height="100px" width="150">
-                        </a>
-                    </span>
-                    <span>
-                        <a class="white link" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='lightskyblue'" href="video.html">Video Title</a>
-                    </span>
-                </div>
-            <!-- -->
+                <!-- -->
 
 
 
-            </div>
-            <div class="left-buttons column-space-between medium rounder">
-                <div class="column-space-between" style="padding:0">
-                    <button class="btn blue" href="#">Home</button>
-                    <button class="btn gray" href="#">Popular</button>
-                    <button class="btn gray" href="#">Recent</button>
-                </div>
-                <div class="centered">
-                    <button class="btn blue" id="login2" href="login.html">Login</button>
-                </div>
             </div>
         </div>
     </main>
