@@ -35,10 +35,19 @@ async function createUser(email, password) {
     email: email,
     password: passwordHash,
     token: uuid.v4(),
+    pfpLink: ""
   };
   await userCollection.insertOne(user);
 
   return user;
+}
+
+function updatePfp(email, pfpLink) {
+  userCollection.updateOne({ email: email }, { $set: { pfpLink: pfpLink } });
+}
+
+function getPfp(email) {
+  return userCollection.findOne({ email: email }, { projection: { pfpLink: 1 } });
 }
 
 // function addScore(score) {
@@ -59,6 +68,8 @@ module.exports = {
   getUser,
   getUserByToken,
   createUser,
+  updatePfp,
+  getPfp,
 //   addScore,
 //   getHighScores,
 };

@@ -11,27 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     if (loggedIn) {
-        navbar.innerHTML = `
-        <a class="white link" href="#">
-            <img src="play_mark2.png" alt="Logo" height="50px" width="50px">
-            Video Library
-        </a>
-        ${emailAddress}
-        <input type="text" class="Search" placeholder="Search...">
-        <button class="btn blue" id="logOut">Log Out</button>
-        `;
-        wrapper.innerHTML = `
-        <button class="btn blue" id="logOut2">Log Out</button>
-        `;
-        footer.innerHTML = `
-        ${emailAddress}
-        `;
-        buttonsWrapper.innerHTML = `
-        <button class="btn blue" href="#" id="home">Home</button>
-        <button class="btn gray" href="#" id="popular">Popular</button>
-        <button class="btn gray" href="#" id="recent">Recent</button>
-        <button class="btn blue" href="profile.html" id="profile">Profile</button>
-        `;
+        navbar.innerHTML = ``;
+        wrapper.innerHTML = ``;
+        footer.innerHTML = ``;
+        buttonsWrapper.innerHTML = ``;
         
         const logOut_btn1 = document.getElementById("logOut");
         const logOut_btn2 = document.getElementById("logOut2");
