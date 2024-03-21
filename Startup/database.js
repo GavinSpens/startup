@@ -5,7 +5,7 @@ const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-const db = client.db('startup'); // ********************* Need to change the database name or this line *****************************************
+const db = client.db(); // ********************* Need to change the database name or this line *****************************************
 const userCollection = db.collection('user');
 // const scoreCollection = db.collection('score');
 

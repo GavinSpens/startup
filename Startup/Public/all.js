@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const db_js = require('../database.js');
     const LoginButton = document.getElementById('login');
     const ProfileButton = document.getElementById('profile');
     const SubmitButton = document.getElementById('submitLogin');
@@ -8,13 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     //PAGE NAVIGATION//
-    LoginButton.addEventListener('click', () => {
-        location.window.href = '/login';
-    });
+    try{
+        LoginButton.addEventListener('click', () => {
+            location.window.href = '/login';
+        });
+    } catch (e) {}
 
-    ProfileButton.addEventListener('click', () => {
-        location.window.href = '/profile';
-    });
+    try {
+        ProfileButton.addEventListener('click', () => {
+            location.window.href = '/profile';
+        });
+    } catch (e) {}
 
 
     //REGISTER//
@@ -32,7 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return null;
     }
 
-    SubmitButton.addEventListener('click', () => {
-        Login(emailInput.value, passwordInput.value);
-    });
+    try {
+        SubmitButton.addEventListener('click', () => {
+            Login(emailInput.value, passwordInput.value);
+        });
+    } catch (e) {}
 });

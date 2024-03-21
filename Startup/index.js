@@ -14,16 +14,6 @@ app.use(express.static('public'));
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// // GetScores
-// apiRouter.get('/scores', (_req, res) => {
-//   res.send(scores);
-// });
-
-// // SubmitScore
-// apiRouter.post('/score', (req, res) => {
-//   scores = updateScores(req.body, scores);
-//   res.send(scores);
-// });
 
 //getEmail
 apiRouter.get('/email', (_req, res) => {
@@ -32,7 +22,7 @@ apiRouter.get('/email', (_req, res) => {
 });
 
 // GetProfileDescription
-apiRouter.get('/profile', (_req, res) => {
+apiRouter.post('/profile', (_req, res) => {
   res.send(profile);
 });
 
