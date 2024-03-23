@@ -42,12 +42,29 @@ async function createUser(email, password) {
   return user;
 }
 
-function updatePfp(email, pfpLink) {
-  userCollection.updateOne({ email: email }, { $set: { pfpLink: pfpLink } });
+// async function getUserInfo(email) {
+//   const user = await getUser(email);
+//   if (user) {
+//     return user;
+//   } else {
+//     return null;
+//   }
+// }
+
+async function updatePfp(email, pfpLink) {
+  const user = await userCollection.findOne({ email });
+  if (user) {
+      user.pfpLink = pfpLink;
+      await user.save();
+      return user;
+  } else {
+      return null;
+  }
 }
 
-function getPfp(email) {
-  return userCollection.findOne({ email: email }, { projection: { pfpLink: 1 } });
+async function getPfp(token) {
+  const user = await userCollection.findOne({ token });
+  return user;
 }
 
 // function addScore(score) {
