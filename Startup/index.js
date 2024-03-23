@@ -72,33 +72,33 @@ apiRouter.get('/user/:email', async (req, res) => {
 });
 
 // secureApiRouter verifies credentials for endpoints
-// var secureApiRouter = express.Router();
-// apiRouter.use(secureApiRouter);
+var secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
 
-// secureApiRouter.use(async (req, res, next) => {
-//   authToken = req.cookies[authCookieName];
-//   const user = await DB.getUserByToken(authToken);
-//   if (user) {
-//     next();
-//   } else {
-//     res.status(401).send({ msg: 'Unauthorized' });
-//   }
-// });
+secureApiRouter.use(async (req, res, next) => {
+  authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+});
 
 
 //getEmail
-apiRouter.get('/email', (_req, res) => {
+secureApiRouter.get('/email', (_req, res) => {
   //modify this to get the email from the database
   res.send(email);
 });
 
 // GetProfileDescription
-apiRouter.post('/profile', (_req, res) => {
+secureApiRouter.post('/profile', (_req, res) => {
   res.send(profile);
 });
 
 // UpdateProfileDescription
-apiRouter.post('/profile', (req, res) => {
+secureApiRouter.post('/profile', (req, res) => {
   profile = updateProfile(req.body);
   res.send(profile);
 });
@@ -106,9 +106,8 @@ apiRouter.post('/profile', (req, res) => {
 // ProfilePic is going to be randomized, with a reroll option
 
 // GetProfilePic
-apiRouter.get('/pfpLink', async (req, res) => {
-  const token = req.headers.authorization;
-  const user = await DB.getPfp(token);
+secureApiRouter.get('/pfpLink', async (req, res) => {
+  const user = await DB.getUserByToken(authToken);
   if (user) {
       res.json(user.pfpLink);
   } else {
@@ -117,9 +116,9 @@ apiRouter.get('/pfpLink', async (req, res) => {
 });
 
 // UpdateProfilePic
-apiRouter.post('/pfpLink', async (req, res) => {
-  const { email, reroutedUrl } = req.body;
-  const user = await DB.updatePfp(email, reroutedUrl);
+secureApiRouter.post('/pfpLink', async (req, res) => {
+  const { pfpLink } = req.body;
+  const user = await DB.updatePfp(authToken, pfpLink);
   if (user) {
       res.json({ message: 'Profile picture updated successfully' });
   } else {

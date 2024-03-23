@@ -51,21 +51,25 @@ async function createUser(email, password) {
 //   }
 // }
 
-async function updatePfp(email, pfpLink) {
-  const user = await userCollection.findOne({ email });
-  if (user) {
-      user.pfpLink = pfpLink;
-      await user.save();
-      return user;
+async function updatePfp(token, pfpLink) {
+  const filter = { token: token };
+  const update = { $set: { pfpLink: pfpLink } };
+
+  const result = await userCollection.updateOne(filter, update);
+
+  if (result.matchedCount > 0) {
+      console.log(`Successfully updated the pfp link: ${pfpLink}`);
+      return true;
   } else {
-      return null;
+      console.log(`No user found with the token: ${token}`);
+      return false;
   }
 }
 
-async function getPfp(token) {
-  const user = await userCollection.findOne({ token });
-  return user;
-}
+// async function getPfp(token) {
+//   const user = await userCollection.findOne({ token: token });
+//   return user;
+// }
 
 // function addScore(score) {
 //   scoreCollection.insertOne(score);
@@ -86,7 +90,7 @@ module.exports = {
   getUserByToken,
   createUser,
   updatePfp,
-  getPfp,
+  // getPfp,
 //   addScore,
 //   getHighScores,
 };
