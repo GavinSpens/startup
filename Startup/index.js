@@ -72,18 +72,18 @@ apiRouter.get('/user/:email', async (req, res) => {
 });
 
 // secureApiRouter verifies credentials for endpoints
-var secureApiRouter = express.Router();
-apiRouter.use(secureApiRouter);
+// var secureApiRouter = express.Router();
+// apiRouter.use(secureApiRouter);
 
-secureApiRouter.use(async (req, res, next) => {
-  authToken = req.cookies[authCookieName];
-  const user = await DB.getUserByToken(authToken);
-  if (user) {
-    next();
-  } else {
-    res.status(401).send({ msg: 'Unauthorized' });
-  }
-});
+// secureApiRouter.use(async (req, res, next) => {
+//   authToken = req.cookies[authCookieName];
+//   const user = await DB.getUserByToken(authToken);
+//   if (user) {
+//     next();
+//   } else {
+//     res.status(401).send({ msg: 'Unauthorized' });
+//   }
+// });
 
 
 //getEmail

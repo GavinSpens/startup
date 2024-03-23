@@ -63,6 +63,10 @@
     border-radius: 40px;
 }
 
+.full-round {
+    border-radius: 50%;
+}
+
 .border-bottom {
     border-bottom: 2px solid gray;
 }

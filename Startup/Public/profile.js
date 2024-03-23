@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Update the profile picture on the frontend
-            pfp.parentElement.innerHTML = `<img src="${reroutedUrl}" alt="Profile picture" height="200px" width="200px" id="pfp">`;
+            pfp.parentElement.innerHTML = `<img class="full-round" src="${reroutedUrl}" alt="Profile picture" height="200px" width="200px" id="pfp">`;
             console.log(reroutedUrl);
         } catch (error) {
             console.error('Error fetching the rerouted URL:', error);
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // body: JSON.stringify({ email })
             });
             let pfpLink = await response.json();
-            pfp.parentElement.innerHTML = `<img src="${pfpLink}" alt="Profile picture" height="200px" width="200px" id="pfp">`;
+            pfp.parentElement.innerHTML = `<img class="full-round" src="${pfpLink}" alt="Profile picture" height="200px" width="200px" id="pfp">`;
             console.log(pfpLink);
             return pfpLink;
         } catch (error) {
@@ -54,7 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
     //     updatePfp();
     // }
 
-    if (getPfp() === null) {
-        updatePfp();
-    }
+
+    updatePfp();
+    getPfp();
+
+
+    // if (getPfp() === null) {
+    //     updatePfp();
+    // }
 });
