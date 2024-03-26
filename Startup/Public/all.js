@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const LoginButton = document.getElementById('login');
+    const LoginButton2 = document.getElementById('login2');
     const ProfileButton = document.getElementById('profile');
     const SubmitButton = document.getElementById('submitLogin');
     const emailInput = document.getElementById('email-input');
@@ -8,10 +9,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //PAGE NAVIGATION//
     try{
-        LoginButton.addEventListener('click', () => {
-            location.window.href = '/login';
+        LoginButton.addEventListener('click', async () => {
+            if (getCookie('token') === null) {
+                location.window.href = '/login';
+            } else {
+                await login("",""); //logout
+            }
         });
     } catch (e) {console.log(e);}
+    try {
+        LoginButton2.addEventListener('click', async () => {
+            if (getCookie('token') === null) {
+                location.window.href = '/login';
+            } else {
+                await login("",""); //logout
+            }
+        });
+    } catch (e) {console.log(e);}
+
 
     try {
         ProfileButton.addEventListener('click', () => {
@@ -40,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     try {
-        SubmitButton.addEventListener('click', () => {
-            login(emailInput.value, passwordInput.value);
+        SubmitButton.addEventListener('click', async () => {
+            await login(emailInput.value, passwordInput.value);
         });
     } catch (e) {console.log(e);}
 });
