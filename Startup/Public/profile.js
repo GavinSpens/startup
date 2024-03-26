@@ -17,6 +17,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     login('test', 'test');
 
+    async function updatePfpButton() {
+        try {
+            // Get url of random image from picsum
+            let response = await fetch('https://picsum.photos/200');
+            pfpLink = response.url;
+    
+            // Send the url to the server to update the profile picture
+            await fetch('/api/pfpLink', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pfpLink })
+            });
+    
+            // Update the profile picture on the frontend
+            const pfpButton = document.getElementById('pfpButton');
+            pfpButton.style.backgroundImage = `url(${pfpLink})`;
+            console.log(`Updated link to: ${pfpLink}`);
+        } catch (error) {
+            console.error('Error fetching the rerouted URL:', error);
+        }
+    }
 
     async function pfptoButton() {
         const pfpButton = document.createElement('button');
@@ -31,7 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
         pfpButton.classList.add('full-round', 'pfp-text');
         pfpParent.innerHTML = '';
         pfpParent.appendChild(pfpButton);
-        pfpButton.addEventListener('click', updatePfp);
+        pfpButton.addEventListener('click', () => {
+            updatePfpButton();
+        });
         return pfpButton;
     }
 
@@ -60,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
         saveBtn.classList.add('btn', 'blue');
         editBtn.replaceWith(saveBtn);
 
-        pfpButton.addEventListener('click', () => {
-            updatePfp();
-        });
+        // pfpButton.addEventListener('click', () => {
+        //     updatePfp();
+        // });
 
         saveBtn.addEventListener('click', async () => {
             const newName = nameInput.value;
