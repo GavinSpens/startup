@@ -86,21 +86,46 @@ secureApiRouter.use(async (req, res, next) => {
 });
 
 
-//getEmail
-secureApiRouter.get('/email', (_req, res) => {
-  //modify this to get the email from the database
-  res.send(email);
+//getName
+secureApiRouter.get('/profileName', async (_req, res) => {
+  const user = await DB.getUserByToken(authToken);
+  if (user) {
+      res.json(user.name);
+  } else {
+      res.status(404).json(null);
+  }
+});
+
+// UpdateName
+secureApiRouter.post('/profileName', async (req, res) => {
+  const { newName } = req.body;
+  const user = await DB.updateName(authToken, newName);
+  if (user) {
+      res.json({ message: 'Name updated successfully' });
+  } else {
+      res.status(404).json(null);
+  }
 });
 
 // GetProfileDescription
-secureApiRouter.post('/profile', (_req, res) => {
-  res.send(profile);
+secureApiRouter.get('/profileDesc', async (_req, res) => {
+  const user = await DB.getUserByToken(authToken);
+  if (user) {
+      res.json(user.description);
+  } else {
+      res.status(404).json(null);
+  }
 });
 
-// UpdateProfileDescription
-secureApiRouter.post('/profile', (req, res) => {
-  profile = updateProfile(req.body);
-  res.send(profile);
+// updateDescription
+secureApiRouter.post('/profileDesc', async (req, res) => {
+  const { newDescription } = req.body;
+  const user = await DB.updateDescription(authToken, newDescription);
+  if (user) {
+      res.json({ message: 'Description updated successfully' });
+  } else {
+      res.status(404).json(null);
+  }
 });
 
 // ProfilePic is going to be randomized, with a reroll option

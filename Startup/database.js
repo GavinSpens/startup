@@ -5,9 +5,8 @@ const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-const db = client.db(); // ********************* Need to change the database name or this line *****************************************
+const db = client.db();
 const userCollection = db.collection('user');
-// const scoreCollection = db.collection('score');
 
 
 // This will asynchronously test the connection and exit the process if it fails
@@ -35,21 +34,44 @@ async function createUser(email, password) {
     email: email,
     password: passwordHash,
     token: uuid.v4(),
-    pfpLink: ""
+    pfpLink: "",
+    name: email,
+    description: "NONE"
   };
   await userCollection.insertOne(user);
 
   return user;
 }
 
-// async function getUserInfo(email) {
-//   const user = await getUser(email);
-//   if (user) {
-//     return user;
-//   } else {
-//     return null;
-//   }
-// }
+async function updateName(token, name) {
+  const filter = { token: token };
+  const update = { $set: { name: name } };
+
+  const result = await userCollection.updateOne(filter, update);
+
+  if (result.matchedCount > 0) {
+      console.log(`Successfully updated name: ${name}`);
+      return true;
+  } else {
+      console.log(`No user found with the token: ${token}`);
+      return false;
+  }
+}
+
+async function updateDescription(token, description) {
+  const filter = { token: token };
+  const update = { $set: { description: description } };
+
+  const result = await userCollection.updateOne(filter, update);
+
+  if (result.matchedCount > 0) {
+      console.log(`Successfully updated description: ${description}`);
+      return true;
+  } else {
+      console.log(`No user found with the token: ${token}`);
+      return false;
+  }
+}
 
 async function updatePfp(token, pfpLink) {
   const filter = { token: token };
@@ -66,31 +88,11 @@ async function updatePfp(token, pfpLink) {
   }
 }
 
-// async function getPfp(token) {
-//   const user = await userCollection.findOne({ token: token });
-//   return user;
-// }
-
-// function addScore(score) {
-//   scoreCollection.insertOne(score);
-// }
-
-// function getHighScores() {
-//   const query = { score: { $gt: 0, $lt: 900 } };
-//   const options = {
-//     sort: { score: -1 },
-//     limit: 10,
-//   };
-//   const cursor = scoreCollection.find(query, options);
-//   return cursor.toArray();
-// }
-
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
   updatePfp,
-  // getPfp,
-//   addScore,
-//   getHighScores,
+  updateName,
+  updateDescription,
 };

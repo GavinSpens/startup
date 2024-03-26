@@ -36,6 +36,13 @@
     display: none;
 }
     /*OTHER*/
+.pfp-text {
+    color: black;
+    text-shadow: -1px -1px 0 lightgray, 1px -1px 0 lightgray, -1px 1px 0 lightgray, 1px 1px 0 lightgray;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .bold {
     font-weight: bold;
 }
