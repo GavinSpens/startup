@@ -11,33 +11,37 @@ document.addEventListener('DOMContentLoaded', function() {
         LoginButton.addEventListener('click', () => {
             location.window.href = '/login';
         });
-    } catch (e) {}
+    } catch (e) {console.log(e);}
 
     try {
         ProfileButton.addEventListener('click', () => {
             location.window.href = '/profile';
         });
-    } catch (e) {}
-
-
-    //REGISTER//
-    
+    } catch (e) {console.log(e);}
 
 
     //LOGIN AND LOGOUT//
-    async function Login(email, password) {
-        const user = await db_js.getUser(email);
-        if (user) {
-            if (bcrypt.compare(password, user.password)) {
-                return user;
-            }
+    async function login(email, password) {
+        if (getCookie('token') === null) {
+            response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email, password: password })
+            });
+            window.location.href = '/profile.html';
+        } else {
+            response = await fetch('/api/auth/logout', {
+                method: 'DELETE'
+            });
+            window.location.href = '/index.html';
         }
-        return null;
     }
 
     try {
         SubmitButton.addEventListener('click', () => {
-            Login(emailInput.value, passwordInput.value);
+            login(emailInput.value, passwordInput.value);
         });
-    } catch (e) {}
+    } catch (e) {console.log(e);}
 });

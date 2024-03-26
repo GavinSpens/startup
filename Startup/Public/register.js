@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const registerBtn = document.querySelector('.btn.btn-primary[type="register"]');
-    const emailInput = document.querySelector('.email-password input[name="varEmail"]');
-    const password = document.querySelector('.email-password input[name="varPassword"]');
-    const confirm = document.querySelector('.email-password input[name="varConfirm"]');
-    const email_err = document.querySelector('.email');
-    const password_err = document.querySelector('.password');
-    const confirm_err = document.querySelector('.confirm');
+    const registerBtn = document.getElementById('submitRegister');
+    const email = document.getElementById('registerEmail');
+    const password = document.getElementById('registerPassword');
+    const confirm = document.getElementById('registerConfirm');
+    const email_err = document.getElementById('email');
+    const password_err = document.getElementById('password');
+    const confirm_err = document.getElementById('confirm');
 
     registerBtn.addEventListener('click', () => {
         email_err.innerHTML = '';
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             emailvalid();
             passwordconditions();
-            success();
+            register();
 
         } catch (error) {
             if (error === 'no-email') {
@@ -56,18 +56,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function emailvalid() {
-        if (!emailInput.value) {
+        if (!email.value) {
             throw('no-email');
-        } else if (!/^[a-zA-Z0-9\._-]+@[a-zA-Z0-9\.-]+\.[a-zA-Z]+$/.test(emailInput.value)) {
+        } else if (!/^[a-zA-Z0-9\._-]+@[a-zA-Z0-9\.-]+\.[a-zA-Z]+$/.test(email.value)) {
             throw('email');
         }
     }
 
-    function success() {
-        localStorage.setItem('email-address', emailInput.value);
-        localStorage.setItem('password', password.value);
-        localStorage.setItem('loggedIn', true);
-        window.location.href = 'main.html';
+    async function register() {
+        let response = await fetch('/api/auth/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email.value, password: password.value })
+        });
+        console.log(response.text());
+        window.location.href = '/profile.html';
     }
 
     let passwordconditions = () => {
