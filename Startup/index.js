@@ -111,7 +111,7 @@ secureApiRouter.get('/email', async (req, res) => {
 secureApiRouter.get('/profileName', async (req, res) => {
   const user = await DB.getUserByToken(req.cookies.token);
   if (user) {
-    res.json(user.name);
+    res.send(user.name);
   } else {
     res.status(404).json(null);
   }

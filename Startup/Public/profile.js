@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Content-Type': 'application/json'
             }
         });
-        let dbName = await response.json();
+        let dbName = await response.text();
         if (dbName === '[object Object]') {
             response = await fetch('/api/email', {
                 method: 'GET',
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 }
             });
-            dbName = await response.json();
+            dbName = await response.text();
             response = await fetch('/api/profileName', {
                 method: 'POST',
                 headers: {

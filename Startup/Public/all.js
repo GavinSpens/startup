@@ -6,18 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('email-input');
     const passwordInput = document.getElementById('password-input');
     const message = document.getElementById('message');
-    
-
-    // //COOKIE FUNCTIONS//
-    // function getCookie(name) {
-    //     const value = `; ${document.cookie}`;
-    //     const parts = value.split(`; ${name}=`);
-    //     if (parts.length === 2) {
-    //         return parts.pop().split(';').shift();
-    //     } else {
-    //         return null;
-    //     }
-    // }
+    const namehere1 = document.getElementById('namehere1');
+    const namehere2 = document.getElementById('namehere2');
 
     //LOGGED IN CHECK//
     async function loggedIn() {
@@ -104,4 +94,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     } catch (e) {console.log(e);}
+
+    //UPDATE PAGE//
+    async function update_by_login_state() {
+        if (await loggedIn()) {
+            response = await fetch('/api/profileName', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const name = await response.text();
+            try {
+                namehere1.innerHTML = name;
+                namehere2.innerHTML = name;
+            } catch (e) {console.log(e);}
+
+            try {
+                LoginButton.innerHTML = "Logout";
+            } catch (e) {console.log(e);}
+            try {
+                LoginButton2.innerHTML = "Logout";
+            } catch (e) {console.log(e);}
+            
+        } else {
+            try {
+                ProfileButton.parentElement.innerHTML = "";
+            } catch (e) {console.log(e);}
+        }
+    }
+    update_by_login_state();
 });
