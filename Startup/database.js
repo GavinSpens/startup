@@ -36,7 +36,7 @@ async function createUser(email, password) {
     token: uuid.v4(),
     pfpLink: "",
     name: email,
-    description: "NONE"
+    description: "NONE",
   };
   await userCollection.insertOne(user);
 

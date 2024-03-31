@@ -33,11 +33,10 @@ apiRouter.post('/auth/create', async (req, res) => {
     const user = await DB.createUser(req.body.email, req.body.password);
 
     // Set the cookie
-    setAuthCookie(res, user.token);
-
-    res.send({
-      id: user._id,
-    });
+    // setAuthCookie(res, user.token);
+    // res.send({ id: user._id });
+    res.cookie(authCookieName, user.token, { maxAge: 900000, httpOnly: true });
+    res.send( user );
   }
 });
 
@@ -46,12 +45,24 @@ apiRouter.post('/auth/login', async (req, res) => {
   const user = await DB.getUser(req.body.email);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      setAuthCookie(res, user.token);
-      res.send({ id: user._id });
+      // setAuthCookie(res, user.token);
+      // res.send({ id: user._id });
+      res.cookie(authCookieName, user.token, { maxAge: 900000, httpOnly: true });
+      res.send( user );
       return;
     }
   }
   res.status(401).send({ msg: 'Unauthorized' });
+});
+
+//get_bool_LoggedIn
+apiRouter.get('/auth/loggedIn', async (req, res) => {
+  const user = await DB.getUserByToken(req.cookies.token);
+  if (user) {
+    res.send(true);
+    return;
+  }
+  res.send(false);
 });
 
 // DeleteAuth token if stored in cookie
@@ -85,69 +96,77 @@ secureApiRouter.use(async (req, res, next) => {
   }
 });
 
+//getEmail
+secureApiRouter.get('/email', async (req, res) => {
+  const user = await DB.getUserByToken(req.cookies.token);
+  if (user) {
+    res.json(user.email);
+  } else {
+    res.status(404).json(null);
+  }
+});
+
 
 //getName
-secureApiRouter.get('/profileName', async (_req, res) => {
-  const user = await DB.getUserByToken(authToken);
+secureApiRouter.get('/profileName', async (req, res) => {
+  const user = await DB.getUserByToken(req.cookies.token);
   if (user) {
-      res.json(user.name);
+    res.json(user.name);
   } else {
-      res.status(404).json(null);
+    res.status(404).json(null);
   }
 });
 
 // UpdateName
 secureApiRouter.post('/profileName', async (req, res) => {
   const { newName } = req.body;
-  const user = await DB.updateName(authToken, newName);
-  if (user) {
-      res.json({ message: 'Name updated successfully' });
+  const updated = await DB.updateName(req.cookies.token, newName);
+  if (updated) {
+    res.json({ message: 'Name updated successfully' });
   } else {
-      res.status(404).json(null);
+    res.status(404).json(null);
   }
 });
 
 // GetProfileDescription
-secureApiRouter.get('/profileDesc', async (_req, res) => {
-  const user = await DB.getUserByToken(authToken);
+secureApiRouter.get('/profileDesc', async (req, res) => {
+  const user = await DB.getUserByToken(req.cookies.token);
   if (user) {
-      res.json(user.description);
+    res.json(user.description);
   } else {
-      res.status(404).json(null);
+    res.status(404).json(null);
   }
 });
 
 // updateDescription
 secureApiRouter.post('/profileDesc', async (req, res) => {
   const { newDescription } = req.body;
-  const user = await DB.updateDescription(authToken, newDescription);
-  if (user) {
-      res.json({ message: 'Description updated successfully' });
+  const updated = await DB.updateDescription(req.cookies.token, newDescription);
+  if (updated) {
+    res.json({ message: 'Description updated successfully' });
   } else {
-      res.status(404).json(null);
+    res.status(404).json(null);
   }
 });
 
-// ProfilePic is going to be randomized, with a reroll option
-
 // GetProfilePic
 secureApiRouter.get('/pfpLink', async (req, res) => {
-  const user = await DB.getUserByToken(authToken);
+  const user = await DB.getUserByToken(req.cookies.token);
   if (user) {
-      res.json(user.pfpLink);
+    res.json(user.pfpLink);
   } else {
-      res.status(404).json(null);
+    res.status(404).json(null);
   }
 });
 
 // UpdateProfilePic
 secureApiRouter.post('/pfpLink', async (req, res) => {
   const { pfpLink } = req.body;
-  const user = await DB.updatePfp(authToken, pfpLink);
-  if (user) {
-      res.json({ message: 'Profile picture updated successfully' });
+  const updated = await DB.updatePfp(req.cookies.token, pfpLink);
+  if (updated) {
+    res.json({ message: 'Profile picture updated successfully' });
   } else {
-      res.status(404).json(null);
+    res.status(404).json(null);
   }
 });
 
@@ -164,9 +183,9 @@ app.use((_req, res) => {
 // setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
-    secure: true,
+    secure: false, //*****************************************change to true in production*****************************************************
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: 'none',
   });
 }
 

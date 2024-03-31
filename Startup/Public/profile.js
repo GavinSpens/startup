@@ -5,17 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const description = document.getElementById('profile-description');
     var pfpLink;
 
-    async function login(email, password) {
-        response = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: email, password: password })
-        });
-    }
+    // async function login(email, password) {
+    //     response = await fetch('/api/auth/login', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ email: email, password: password })
+    //     });
+    // }
 
-    login('test', 'test');
+    // login('test', 'test');
 
     async function updatePfpButton() {
         try {
@@ -181,15 +181,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Content-Type': 'application/json'
             }
         });
-        let name = await response.json();
-        return name;
+        let dbName = await response.json();
+        if (dbName === '[object Object]') {
+            response = await fetch('/api/email', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            dbName = await response.json();
+            response = await fetch('/api/profileName', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ newName: dbName })
+            });
+        }
+        return dbName;
+        
     }
 
     async function loadProfile() {
         let newName = await loadName();
         let newDescription = await loadDescription();
         name.innerHTML = newName;
-        if (newDescription !== 'NONE') {
+        if (newDescription !== '[object Object]') {
             description.innerHTML = newDescription;
         }
         loadPfp();
