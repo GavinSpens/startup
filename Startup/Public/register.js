@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const registerBtn = document.getElementById('submitRegister');
+    const cancelBtn = document.getElementById('cancelRegister');
     const email = document.getElementById('registerEmail');
     const password = document.getElementById('registerPassword');
     const confirm = document.getElementById('registerConfirm');
@@ -101,4 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
             throw('confirm');
         }
     }
+
+    cancelBtn.addEventListener('click', () => {
+        window.location.href = '/login.html';
+    });
 });

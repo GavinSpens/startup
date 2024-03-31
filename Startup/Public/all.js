@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Content-Type': 'application/json'
                 }
             });
-            if (200 <= response.status && response.status < 300) {
+            if (response === 'true') {
                 await login(emailInput.value, passwordInput.value);
             } else {
                 message.classList.remove('hidden');
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 LoginButton2.innerHTML = "Logout";
             } catch (e) {console.log(e);}
-            
+
         } else {
             try {
                 ProfileButton.parentElement.innerHTML = "";
