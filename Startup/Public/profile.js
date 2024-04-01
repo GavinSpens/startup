@@ -5,18 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const description = document.getElementById('profile-description');
     var pfpLink;
 
-    // async function login(email, password) {
-    //     response = await fetch('/api/auth/login', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ email: email, password: password })
-    //     });
-    // }
-
-    // login('test', 'test');
-
     async function updatePfpButton() {
         try {
             // Get url of random image from picsum
@@ -84,10 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         saveBtn.innerHTML = 'Save';
         saveBtn.classList.add('btn', 'blue');
         editBtn.replaceWith(saveBtn);
-
-        // pfpButton.addEventListener('click', () => {
-        //     updatePfp();
-        // });
 
         saveBtn.addEventListener('click', async () => {
             const newName = nameInput.value;

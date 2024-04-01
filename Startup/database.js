@@ -36,11 +36,28 @@ async function createUser(email, password) {
     token: uuid.v4(),
     pfpLink: "",
     name: email,
-    description: "NONE",
+    description: "No profile description added",
+    verified: false,
   };
   await userCollection.insertOne(user);
 
   return user;
+}
+
+async function verify(token, y_n) {
+  const filter = { token: token };
+  const update = { $set: { verified: y_n } };
+
+  const result = await userCollection.updateOne(filter, update);
+
+  if (result.matchedCount > 0) {
+      const un = y_n ? "" : "un";
+      console.log(`Successfully ${un}verified user with token: ${token}`);
+      return true;
+  } else {
+      console.log(`No user found with the token: ${token}`);
+      return false;
+  }
 }
 
 async function updateName(token, name) {
@@ -95,4 +112,5 @@ module.exports = {
   updatePfp,
   updateName,
   updateDescription,
+  verify,
 };

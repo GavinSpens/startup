@@ -55,7 +55,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
-//get_bool_LoggedIn
+//getLoggedIn
 apiRouter.get('/auth/loggedIn', async (req, res) => {
   const user = await DB.getUserByToken(req.cookies.token);
   if (user) {
@@ -65,6 +65,24 @@ apiRouter.get('/auth/loggedIn', async (req, res) => {
   res.send(false);
 });
 
+//getVerified
+apiRouter.get('/auth/verified', async (req, res) => {
+  const user = await DB.getUserByToken(req.cookies.token);
+  const userverified = user.verified;
+  if (userverified) {
+    res.send(true);
+    return;
+  }
+  res.send(false);
+});
+
+//setVerified
+apiRouter.post('/auth/verified', async (req, res) => {
+  const { y_n } = req.body;
+  response = DB.verify(req.cookies.token, y_n === 'true');
+  res.send(response);
+});
+
 // DeleteAuth token if stored in cookie
 apiRouter.delete('/auth/logout', (_req, res) => {
   res.clearCookie(authCookieName);
@@ -72,11 +90,12 @@ apiRouter.delete('/auth/logout', (_req, res) => {
 });
 
 // GetUser returns information about a user
-apiRouter.get('/user/:email', async (req, res) => {
+apiRouter.get('/user/:email/:password', async (req, res) => {
   const user = await DB.getUser(req.params.email);
   if (user) {
     const token = req?.cookies.token;
-    res.send({ email: user.email, authenticated: token === user.token });
+    const password = req.params.password;
+    res.send({ email: user.email, authenticated: token === user.token || await bcrypt.compare(password, user.password)});
     return;
   }
   res.status(404).send({ msg: 'Unknown' });
@@ -183,7 +202,7 @@ app.use((_req, res) => {
 // setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
-    secure: false, //*****************************************change to true in production*****************************************************
+    secure: false,
     httpOnly: true,
     sameSite: 'none',
   });
