@@ -1,5 +1,5 @@
 {
-  "name": "Startup",
+  "name": "startup",
   "version": "1.0.0",
   "description": "",
   "main": "profile.js",
@@ -14,6 +14,7 @@
     "cookie-parser": "^1.4.6",
     "express": "^4.19.2",
     "mongodb": "^6.5.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "s3client": "^3.0.0"
   }
 }

@@ -2,6 +2,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const DB = require('./database.js');
+const VL = require('./videofetch.js');
 const app = express();
 
 const authCookieName = 'token';
@@ -35,7 +36,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     // Set the cookie
     // setAuthCookie(res, user.token);
     // res.send({ id: user._id });
-    res.cookie(authCookieName, user.token, { maxAge: 900000, httpOnly: true });
+    setAuthCookie(res, user.token);
     res.send( user );
   }
 });
@@ -47,7 +48,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     if (await bcrypt.compare(req.body.password, user.password)) {
       // setAuthCookie(res, user.token);
       // res.send({ id: user._id });
-      res.cookie(authCookieName, user.token, { maxAge: 900000, httpOnly: true });
+      setAuthCookie(res, user.token);
       res.send( user );
       return;
     }
@@ -98,7 +99,7 @@ apiRouter.get('/user/:email/:password', async (req, res) => {
     res.send({ email: user.email, authenticated: token === user.token || await bcrypt.compare(password, user.password)});
     return;
   }
-  res.status(404).send({ msg: 'Unknown' });
+  res.send({ authenticated: false });
 });
 
 // secureApiRouter verifies credentials for endpoints
@@ -189,6 +190,31 @@ secureApiRouter.post('/pfpLink', async (req, res) => {
   }
 });
 
+// GetVideo
+secureApiRouter.get('/video/:name', async (req, res) => {
+  const video = await VL.getVideo(req.params.name);
+  if (video) {
+    res.send(video.Body);
+  } else {
+    res.status(404).send(null);
+  }
+});
+
+// GetVideoNames
+secureApiRouter.get('/videoNames', async (_req, res) => {
+  res.send(await VL.getVideoNames());
+});
+
+// UploadVideo
+secureApiRouter.post('/video/:name', async (req, res) => {
+  const uploaded = await VL.uploadVideo(req.params.name, req.body);
+  if (uploaded) {
+    res.json({ message: 'Video uploaded successfully' });
+  } else {
+    res.status(404).json(null);
+  }
+});
+
 // Default error handler
 app.use(function (err, req, res, next) {
   res.status(500).send({ type: err.name, message: err.message });
@@ -202,7 +228,7 @@ app.use((_req, res) => {
 // setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
-    secure: false,
+    secure: true,
     httpOnly: true,
     sameSite: 'none',
   });
