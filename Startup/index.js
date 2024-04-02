@@ -102,6 +102,24 @@ apiRouter.get('/user/:email/:password', async (req, res) => {
   res.send({ authenticated: false });
 });
 
+// GetVideo
+apiRouter.get('/video/:name', async (req, res) => {
+  const video = await VL.getVideo(req.params.name);
+  if (video) {
+    res.writeHead(200, {
+      'Content-Type': 'video/mp4'
+    });
+    video.pipe(res);
+  } else {
+    res.status(404).send(null);
+  }
+});
+
+// GetVideoNames
+apiRouter.get('/videoNames', async (_req, res) => {
+  res.send(await VL.getVideoNames());
+});
+
 // secureApiRouter verifies credentials for endpoints
 var secureApiRouter = express.Router();
 apiRouter.use(secureApiRouter);
@@ -188,21 +206,6 @@ secureApiRouter.post('/pfpLink', async (req, res) => {
   } else {
     res.status(404).json(null);
   }
-});
-
-// GetVideo
-secureApiRouter.get('/video/:name', async (req, res) => {
-  const video = await VL.getVideo(req.params.name);
-  if (video) {
-    res.send(video.Body);
-  } else {
-    res.status(404).send(null);
-  }
-});
-
-// GetVideoNames
-secureApiRouter.get('/videoNames', async (_req, res) => {
-  res.send(await VL.getVideoNames());
 });
 
 // UploadVideo

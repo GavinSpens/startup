@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const videos_header = document.getElementById('videos_header');
     const videos = document.getElementById('videos');
     const verify = document.getElementById('verify');
+    const RegisterButton = document.getElementById('register');
+
 
     //STATUS CHECK//
     async function loggedIn() {
@@ -144,6 +146,10 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 console.log("Error fetching login: " + authenticated);
             }
+        });
+
+        RegisterButton.addEventListener('click', () => {
+            window.location.href = 'register.html';
         });
     } catch (e) {console.log(e);}
 

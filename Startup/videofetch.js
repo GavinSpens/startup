@@ -4,7 +4,7 @@ const credentials = require('./dbConfig.json');
 
 const s3 = new S3Client({ 
   region: "us-east-1",
-  credentials: credentials.s3
+  credentials: credentials.aws
 });
 
 const bucketName = 'video.library';
@@ -13,7 +13,7 @@ const getVideo = async (keyName) => {
   try {
     const data = await s3.send(new GetObjectCommand({ Bucket: bucketName, Key: keyName }));
     console.log("Success");
-    return data;
+    return data.Body;
   } catch (err) {
     console.log("Error", err);
     return;
