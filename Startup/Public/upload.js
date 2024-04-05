@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.querySelector('.progress-bar');
     const progress = document.querySelector('.progress');
     const percent = document.querySelector('.percent');
-    const logout = document.querySelector('footer button');
+    const logout = document.getElementById('login');
 
     submitBtn.disabled = false;
     logout.disabled = false;
@@ -73,9 +73,4 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = false;
         logout.disabled = false;
     }
-
-    logout.addEventListener('click', async () => {
-        localStorage.setItem('loggedIn', false);
-        window.location.href = 'main.html';
-    });
 });
