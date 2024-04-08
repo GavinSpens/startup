@@ -1,75 +1,96 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const uploadLabel = document.querySelector('.upload-label');
-    const fileInput = document.querySelector('.file-input');
-    const submitBtn = document.querySelector('.btn.btn-primary');
-    const progressBar = document.querySelector('.progress-bar');
-    const progress = document.querySelector('.progress');
-    const percent = document.querySelector('.percent');
+    const videoInLabel = document.querySelector('.upload-label');
+    const videoInput = document.querySelector('.file-input');
+    const imgInLabel = document.querySelector('.upload-thm-label');
+    const imgInput = document.querySelector('.img-input');
+    const title = document.getElementById('title');
+    const description = document.getElementById('description');
+    const submitBtn = document.getElementById('upload');
     const logout = document.getElementById('login');
 
     submitBtn.disabled = false;
     logout.disabled = false;
 
-    uploadLabel.addEventListener('click', () => {
-        fileInput.click();
+    videoInLabel.addEventListener('click', () => {
+        videoInput.click();
     });
 
-    fileInput.addEventListener('change', () => {
-        uploadLabel.textContent = fileInput.files[0].name;
+    videoInput.addEventListener('change', () => {
+        videoInLabel.textContent = videoInput.files[0].name;
     });
 
-    uploadLabel.addEventListener('dragover', (e) => {
+    videoInLabel.addEventListener('dragover', (e) => {
         e.preventDefault();
-        uploadLabel.classList.add('dragover');
+        videoInLabel.classList.add('dragover');
     });
 
-    uploadLabel.addEventListener('dragleave', () => {
-        uploadLabel.classList.remove('dragover');
+    videoInLabel.addEventListener('dragleave', () => {
+        videoInLabel.classList.remove('dragover');
     });
 
-    uploadLabel.addEventListener('drop', (e) => {
+    videoInLabel.addEventListener('drop', (e) => {
         e.preventDefault();
-        uploadLabel.classList.remove('dragover');
-        fileInput.files = e.dataTransfer.files;
-        uploadLabel.textContent = fileInput.files[0].name;
+        videoInLabel.classList.remove('dragover');
+        videoInput.files = e.dataTransfer.files;
+        videoInLabel.textContent = videoInput.files[0].name;
+    });
+
+    imgInLabel.addEventListener('click', () => {
+        imgInput.click();
+    });
+
+    imgInput.addEventListener('change', () => {
+        imgInLabel.textContent = imgInput.files[0].name;
+    });
+
+    imgInLabel.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        imgInLabel.classList.add('dragover');
+    });
+
+    imgInLabel.addEventListener('dragleave', () => {
+        imgInLabel.classList.remove('dragover');
+    });
+
+    imgInLabel.addEventListener('drop', (e) => {
+        e.preventDefault();
+        imgInLabel.classList.remove('dragover');
+        imgInput.files = e.dataTransfer.files;
+        imgInLabel.textContent = imgInput.files[0].name;
     });
 
     submitBtn.addEventListener('click', () => {
-        if (fileInput.files.length) {
+        if (videoInput.files.length && imgInput.files.length && title.value && description.value) {
             submitBtn.disabled = true;
             logout.disabled = true;
             uploadVideo();
-            updateProgressBar();
         }
     });
-
     async function uploadVideo() {
-        //upload video
-    }
+        const formData = new FormData();
+        formData.append('title', title.value);
+        formData.append('description', description.value);
+        formData.append('video', videoInput.files[0]);
+        formData.append('thumbnail', imgInput.files[0]);
 
-    async function updateProgressBar() {
-        progressBar.value = 0;
-        progressBar.style.opacity = 1;
-        while (progressBar.value < 100) {
-            progressBar.value += 1;
-            progress.style.width = `${progressBar.value}%`;
-            percent.textContent = `Progress: ${progressBar.value}%`;
+        response = await fetch('/api/video', {
+            method: 'POST',
+            body: formData
+        });
 
-            await new Promise(r => setTimeout(r, 100));
+        const data = await response;
+        if (data.ok) {
+            alert('Video uploaded successfully');
+        } else if (data.status === 409) {
+            alert('Video title already in use');
+        } else {
+            alert('Error uploading video');
         }
+
         finish();
     }
 
     async function finish() {
-        percent.style.color = 'lightskyblue';
-        percent.textContent = 'Upload complete';
-
-        await new Promise(r => setTimeout(r, 5000));
-        progressBar.style.opacity = 0;
-        percent.style.color = 'white';
-        progressBar.value = 0;
-        progress.style.width = 0;
-        percent.textContent = 'Progress: 0%';
         submitBtn.disabled = false;
         logout.disabled = false;
     }

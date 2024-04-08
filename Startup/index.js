@@ -4,6 +4,8 @@ const express = require('express');
 const DB = require('./database.js');
 const VL = require('./videofetch.js');
 const app = express();
+const multer = require('multer');
+const upload = multer();
 
 const authCookieName = 'token';
 
@@ -104,12 +106,50 @@ apiRouter.get('/user/:email/:password', async (req, res) => {
 
 // GetVideo
 apiRouter.get('/video/:name', async (req, res) => {
-  const video = await VL.getVideo(req.params.name);
-  if (video) {
+  try {
+    const data = await VL.getVideo(req.params.name);
+    console.log(data); // Log the data
+    if (data) {
+      res.writeHead(200, {
+        'Content-Type': 'video/mp4'
+      });
+
+      data.pipe(res).on('error', err => {
+        console.error(err); // Log any errors from the pipe method
+        res.status(500).send('Error streaming video');
+      });
+    } else {
+      res.status(404).send(null);
+    }
+  } catch (err) {
+    console.error(err); // Log any errors from VL.getVideo
+    res.status(500).send('Error fetching video');
+  }
+});
+
+// GetThumbnail
+apiRouter.get('/thumbnail/:name', async (req, res) => {
+  const data = await VL.getThumbnail(req.params.name);
+  if (data) {
     res.writeHead(200, {
-      'Content-Type': 'video/mp4'
+      'Content-Type': 'image/jpeg'
     });
-    video.pipe(res);
+
+    data.pipe(res);
+  } else {
+    res.status(404).send(null);
+  }
+});
+
+// GetDescription
+apiRouter.get('/description/:name', async (req, res) => {
+  const data = await VL.getDescription(req.params.name);
+  if (data) {
+    res.writeHead(200, {
+      'Content-Type': 'text/plain'
+    });
+
+    data.pipe(res);
   } else {
     res.status(404).send(null);
   }
@@ -209,8 +249,15 @@ secureApiRouter.post('/pfpLink', async (req, res) => {
 });
 
 // UploadVideo
-secureApiRouter.post('/video/:name', async (req, res) => {
-  const uploaded = await VL.uploadVideo(req.params.name, req.body);
+secureApiRouter.post('/video', upload.fields([{ name: 'video', maxCount: 1 }, { name: 'thumbnail', maxCount: 1 }]), async (req, res) => {
+  // check if video name is already in use
+  const videoNamesResponse = await VL.getVideoNames();
+  const names = videoNamesResponse.Contents.map(obj => obj.Key);
+  if (names.includes(req.body.title)) {
+    res.status(409).json({ message: 'Video title already in use' });
+    return;
+  }
+  const uploaded = await VL.uploadVideo(req.body.title, req.body.description, req.files.video[0], req.files.thumbnail[0]);
   if (uploaded) {
     res.json({ message: 'Video uploaded successfully' });
   } else {
@@ -219,6 +266,7 @@ secureApiRouter.post('/video/:name', async (req, res) => {
 });
 
 // Default error handler
+
 app.use(function (err, req, res, next) {
   res.status(500).send({ type: err.name, message: err.message });
 });

@@ -10,12 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.50.0",
+    "aws-sdk": "^2.1590.0",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
     "express": "^4.19.2",
     "mongodb": "^6.5.0",
-    "uuid": "^9.0.1",
-    "aws-sdk": "^2.1590.0",
-    "@aws-sdk/client-s3": "^3.50.0"
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.1"
   }
 }

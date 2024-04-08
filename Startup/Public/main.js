@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoHere = document.getElementById('video-here');
     const videoName = document.getElementById('video-name');
 
-    const myVideoName = 'rickroll.mp4';
+    const myVideoName = 'lkj';
 
     function loadVideo() {
         videoHere.innerHTML = `<video width="320" height="240" controls>

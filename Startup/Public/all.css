@@ -286,9 +286,9 @@ footer {
 .file-input {
     position: absolute;
     top: 110px;
-    left: 15%;
-    height: 50vh;
-    width: 25vw;
+    left: 5%;
+    height: 33vh;
+    width: calc(33vh * 3 / 2);
     opacity: 0;
 }
 
@@ -296,9 +296,9 @@ footer {
     padding: 15px;
     position: absolute;
     top: 110px;
-    left: 15%;
-    height: 50vh;
-    width: 25vw;
+    left: 5%;
+    height: 33vh;
+    width: calc(33vh * 3 / 2);
     border-radius: 10px;
     background-color: #3a3a3a;
     color: white;
@@ -316,6 +316,42 @@ footer {
 }
 
 .upload-label.dragover {
+    border: 2px dashed #aaaaaa;
+}
+
+.img-input {
+    position: absolute;
+    top: 110px;
+    left: 35%;
+    height: 33vh;
+    width: calc(33vh * 3 / 2);
+    opacity: 0;
+}
+
+.upload-thm-label {
+    padding: 15px;
+    position: absolute;
+    top: 110px;
+    left: 35%;
+    height: 33vh;
+    width: calc(33vh * 3 / 2);
+    border-radius: 10px;
+    background-color: #3a3a3a;
+    color: white;
+    border: 1px solid #aaaaaa;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upload-thm-label:hover {
+    cursor: pointer;
+    background-color: #4a4a4a;
+}
+
+.upload-thm-label.dragover {
     border: 2px dashed #aaaaaa;
 }
 
