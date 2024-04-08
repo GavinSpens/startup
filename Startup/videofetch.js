@@ -3,6 +3,7 @@ const { S3Client, GetObjectCommand, ListObjectsCommand, PutObjectCommand } = req
 const credentials = require('./dbConfig.json');
 const { Readable } = require('stream');
 const { Upload } = require("@aws-sdk/lib-storage");
+const fs = require('fs');
 
 
 const s3 = new S3Client({ 
@@ -64,42 +65,10 @@ const getVideoNames = async () => {
   }
 }
 
-// const uploadThm = async (keyName, thm) => {
-//   try {
-//     const data = await s3.send(new PutObjectCommand({ Bucket: bucketName, Key: keyName, Body: thm }));
-//     return data;
-//   } catch (err) {
-//     console.log("Error", err);
-//     return;
-//   }
-// }
-
-// const uploadJustVideo = async (keyName, video) => {
-//   try {
-//     const data = await s3.send(new PutObjectCommand({ Bucket: bucketName, Key: keyName, Body: video }));
-//     return data;
-//   } catch (err) {
-//     console.log("Error", err);
-//     return;
-//   }
-// }
-
-// const uploadDescription = async (keyName, description) => {
-//   try {
-//     const data = await s3.send(new PutObjectCommand({ Bucket: bucketName, Key: keyName, Body: description }));
-//     return data;
-//   } catch (err) {
-//     console.log("Error", err);
-//     return;
-//   }
-// }
-
 const uploadVideo = async (keyName, description, thm, video) => {
   try {
     // Upload thumbnail
-    const thmStream = new Readable();
-    thmStream.push(thm);
-    thmStream.push(null);
+    const thmStream = fs.createReadStream(thm.path);
 
     const thmUploader = new Upload({
       client: s3,
@@ -114,9 +83,7 @@ const uploadVideo = async (keyName, description, thm, video) => {
     console.log("Thumbnail upload completed:", thmData);
 
     // Upload video
-    const videoStream = new Readable();
-    videoStream.push(video);
-    videoStream.push(null);
+    const videoStream = fs.createReadStream(video.path);
 
     const videoUploader = new Upload({
       client: s3,
@@ -148,19 +115,6 @@ const uploadVideo = async (keyName, description, thm, video) => {
     console.log("Description upload completed:", descData);
 
     return true;
-
-    // const data = await uploadThm(keyName + ".jpg", thmStream);
-    // if (data) {
-    //   const data2 = await uploadJustVideo(keyName + ".mp4", videoStream);
-    //   if (data2) {
-    //     const data3 = await uploadDescription(keyName + ".txt", description);
-    //     if (data3) {
-    //       console.log("Success");
-    //       return true;
-    //     }
-    //   }
-    // }
-    // return false;
   } catch (err) {
     console.log("Error: ", err);
     return false;
