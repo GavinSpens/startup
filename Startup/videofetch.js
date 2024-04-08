@@ -68,7 +68,7 @@ const getVideoNames = async () => {
 const uploadVideo = async (keyName, description, thm, video) => {
   try {
     // Upload thumbnail
-    const thmStream = fs.createReadStream(thm.path);
+    const thmStream = Readable.from(thm.buffer);
 
     const thmUploader = new Upload({
       client: s3,
@@ -83,7 +83,7 @@ const uploadVideo = async (keyName, description, thm, video) => {
     console.log("Thumbnail upload completed:", thmData);
 
     // Upload video
-    const videoStream = fs.createReadStream(video.path);
+    const videoStream = Readable.from(video.buffer);
 
     const videoUploader = new Upload({
       client: s3,
