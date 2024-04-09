@@ -129,7 +129,7 @@ apiRouter.get('/video/:name', async (req, res) => {
 
 // GetThumbnail
 apiRouter.get('/thumbnail/:name', async (req, res) => {
-  const data = await VL.getThumbnail(req.params.name);
+  const data = await VL.getThm(req.params.name);
   if (data) {
     res.writeHead(200, {
       'Content-Type': 'image/jpeg'
@@ -143,7 +143,7 @@ apiRouter.get('/thumbnail/:name', async (req, res) => {
 
 // GetDescription
 apiRouter.get('/description/:name', async (req, res) => {
-  const data = await VL.getDescription(req.params.name);
+  const data = await VL.getDesc(req.params.name);
   if (data) {
     res.writeHead(200, {
       'Content-Type': 'text/plain'

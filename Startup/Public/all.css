@@ -120,9 +120,9 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(calc(150px * 3 / 2), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(calc(240px * 3 / 2), 1fr));
     grid-gap: 20px;
-    padding: 10px;
+    padding: 20px;
 }
 
 .centered {
@@ -159,6 +159,10 @@ p {
 
 
 /*BACKGROUNDS*/
+.black-background {
+    background-color: #000000;
+}
+
 .dark {
     background-color: #202020;
 }
@@ -391,4 +395,8 @@ footer {
 
 .padding-20 {
     padding: 20px;
+}
+
+.pointer {
+    cursor: pointer;
 }
