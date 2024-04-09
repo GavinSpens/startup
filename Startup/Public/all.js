@@ -13,6 +13,51 @@ document.addEventListener('DOMContentLoaded', function() {
     const verify = document.getElementById('verify');
     const RegisterButton = document.getElementById('register');
 
+    
+    // Adjust the webSocket protocol to what is being used for HTTP
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+
+    // Display that we have opened the webSocket
+    socket.onopen = (event) => {
+        console.log('WebSocket opened:', event);
+    
+        socket.onmessage = async (event) => {
+            const text = await event.data.text();
+            const data = JSON.parse(text);
+            if (data.msg === 'connected') {
+                let username = await fetch('/api/profileName')
+                if (username) {
+                    sendMsg('received connected', username);
+                }
+            }
+            msg(data.name, data.msg);
+            
+        };
+
+        socket.onclose = (event) => {
+            console.error('WebSocket closed:', event);
+        };
+
+        async function sendMsg(msg, name) {
+            if (!name) {
+                name = await fetch('/api/profileName').then(res => res.text());
+            }
+            socket.send(`{"name":"${name}", "msg":"${msg}"}`);
+        }
+
+        async function msg(name, msg) {
+            const [action, video, number] = msg.split(' ');
+            if (action === 'like') {
+                if (number === '1') {
+                    alert(`${name} liked your video!\n${video} has ${number} like`);
+                } else {
+                    alert(`${name} liked your video!\n${video} has ${number} likes`);
+                }
+            }
+        }
+    }
+
 
     //STATUS CHECK//
     async function loggedIn() {
@@ -200,4 +245,56 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     update_by_user_status();
+
+    async function thisthing() {
+        let videoNames = await fetch('/api/videoNames').then(res => res.json());
+        await videoNames;
+        for (var i = 0; i < videoNames.length; i++) {
+            makethestupideventlistenerforthebutton(videoNames[i]);
+        }
+    }
+    thisthing();
+
+    function waitForElement(id) {
+        return new Promise((resolve, reject) => {
+            // Create a MutationObserver to watch for changes in the DOM
+            const observer = new MutationObserver((mutations, observer) => {
+                // If the element exists in the document, resolve the promise and disconnect the observer
+                if (document.getElementById(id)) {
+                    resolve(document.getElementById(id));
+                    observer.disconnect();
+                }
+            });
+            // Start observing the document with the configured parameters
+            observer.observe(document, { childList: true, subtree: true });
+        });
+    }
+
+    async function makethestupideventlistenerforthebutton(name) {
+        try {
+            await waitForElement(`${name}-like`);
+            const like = document.getElementById(`${name}-like`);
+            like.innerHTML = `
+            <button class="full-round blue centered" style="height:40px; width:40px;" id="${name}-like-button">
+                <img src="./like.png" alt="like" style="height:40px; width:40px;"/>
+            </button>
+            `;
+            await waitForElement(`${name}-like-button`);
+            let button = document.getElementById(`${name}-like-button`);
+            button.addEventListener('click', async () => {
+                response = await fetch('/api/like/' + name, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const text = await response.text();
+                if (text === "true") {
+                    alert(`You liked ${name}`);
+                } else {
+                    console.log("Error fetching like: " + text);
+                }
+            });
+        } catch (e) {console.log(e);}
+    }
 });

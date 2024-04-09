@@ -265,6 +265,17 @@ secureApiRouter.post('/video', upload.fields([{ name: 'video', maxCount: 1 }, { 
   }
 });
 
+// likeVideo
+secureApiRouter.post('/like/:name', async (req, res) => {
+  const existingConnection = connections.find(c => c.id === connection.id);
+  if (!existingConnection) {
+    res.status(404).send('No websocket connection');
+  }
+  ws.send(JSON.stringify({ type: 'like', name: req.params.name }));
+  const liked = await VL.likeVideo(req.params.name);
+  res.send(liked);
+});
+
 // Default error handler
 
 app.use(function (err, req, res, next) {
@@ -285,6 +296,70 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+// websocket stuff
+
+const { WebSocketServer } = require('ws');
+
+// Create a websocket object
+const wss = new WebSocketServer({ noServer: true });
+
+// Handle the protocol upgrade from HTTP to WebSocket
+server.on('upgrade', (request, socket, head) => {
+  wss.handleUpgrade(request, socket, head, function done(ws) {
+    wss.emit('connection', ws, request);
+  });
+});
+
+// Keep track of all the connections so we can forward messages
+let connections = [];
+let id = myusername;
+var connection = {id: id, alive: false, ws: null};
+wss.on('connection', (ws) => {
+  connection = { id: ++id, alive: true, ws: ws, user: null};
+  ws.send({msg: 'connected'});
+
+  
+  
+
+
+  connections.push(connection);
+  ws.on('message', function message(data) {
+    // connections.forEach((c) => {
+    //   if (c.user === connection.user) {
+    //     c.ws.send();
+    //   }
+    // });
+    let c = connections[]
+  });
+
+  // Remove the closed connection so we don't try to forward anymore
+  ws.on('close', () => {
+    const pos = connections.findIndex((o, i) => o.id === connection.id);
+
+    if (pos >= 0) {
+      connections.splice(pos, 1);
+    }
+  });
+
+  // Respond to pong messages by marking the connection alive
+  ws.on('pong', () => {
+    connection.alive = true;
+  });
+});
+
+// Keep active connections alive
+setInterval(() => {
+  connections.forEach((c) => {
+    // Kill any connection that didn't respond to the ping last time
+    if (!c.alive) {
+      c.ws.terminate();
+    } else {
+      c.alive = false;
+      c.ws.ping();
+    }
+  });
+}, 10000);

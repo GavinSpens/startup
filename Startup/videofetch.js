@@ -58,10 +58,28 @@ const getVideoNames = async () => {
   try {
     const data = await s3.send(new ListObjectsCommand({ Bucket: bucketName }));
     console.log("Success");
-    return data;
+    // delete last 4 characters of each key to remove file extension
+    data.Contents.forEach((element) => {
+      element.Key = element.Key.slice(0, -4);
+    });
+    // put the keys in an exclusive set (not allowing repeats) and return it
+    return [...new Set(data.Contents.map((element) => element.Key))];
   } catch (err) {
     console.log("Error", err);
     return;
+  }
+}
+
+const likeVideo = async (keyName) => {
+  try {
+    const data = await s3.send(new GetObjectCommand({ Bucket: bucketName, Key: keyName + ".txt"}));
+    const txt = data.Body.toString();
+    const [desc, likes] = txt.split("\n");
+    const sent = await s3.send(new PutObjectCommand({ Bucket: bucketName, Key: keyName + ".txt", Body: desc + "\n" + (parseInt(likes) + 1) }));
+    return true;
+  } catch (err) {
+    console.log("Error", err);
+    return false;
   }
 }
 
@@ -126,5 +144,6 @@ module.exports = {
   getVideoNames,
   uploadVideo,
   getThm,
-  getDesc
+  getDesc,
+  likeVideo
 };

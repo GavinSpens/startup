@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const videosHere = document.getElementById('videos-here');
 
-    const myVideoName = 'rickroll';
-
     function waitForElement(id) {
         return new Promise((resolve, reject) => {
             // Create a MutationObserver to watch for changes in the DOM
@@ -18,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function playVideo(element, videoHere, myVideoName, videoName) {
+    function playVideo(videoHere, myVideoName, videoName) {
         videoHere.innerHTML = `
         <video class="pointer black-background rounder" id="${myVideoName}-video" width="320" height="240" controls>
             <source src="/api/video/${myVideoName}" type="video/mp4">
@@ -58,28 +56,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function thisisstupidthatIneedthis(element, videoHere, myVideoName, videoName) {
-        element.addEventListener('click', playVideo.bind(null, element, videoHere, myVideoName, videoName));
+        element.addEventListener('click', playVideo.bind(null, videoHere, myVideoName, videoName));
     }
 
-    //add 'uhh' and myVideoName to an empty array
-    var videoNames = [];
-    videoNames.push(myVideoName);
-    videoNames.push('uhh');
+    async function sillyme() {
+        let videoNames = await fetch('/api/videoNames').then(res => res.json());
+        await videoNames;
 
-    //replace the innerHTML of videosHere with the videos
-    let html = '';
-    for (var i = 0; i < videoNames.length; i++) {
-        html += `
-        <div class="video-container">
-            <div id="${videoNames[i]}-here" class="video-here"></div>
-            <div id="${videoNames[i]}-name" class="video-name"></div>
-        </div>
-        `;
+        let html = '';
+        for (var i = 0; i < videoNames.length; i++) {
+            html += `
+            <div class="video-container">
+                <div id="${videoNames[i]}-here" class="video-here"></div>
+                <span class="row-space-between padding-20" style="width:320px">
+                    <div id="${videoNames[i]}-name" class="video-name"></div>
+                    <div id="${videoNames[i]}-like"></div>
+                </span>
+            </div>
+            `;
+        }
+        videosHere.innerHTML = html;
+        for (var i = 0; i < videoNames.length; i++) {
+            const videohere = document.getElementById(`${videoNames[i]}-here`);
+            const videoname = document.getElementById(`${videoNames[i]}-name`);
+            loadVideo(videoNames[i], videohere, videoname);
+        }
     }
-    videosHere.innerHTML = html;
-    for (var i = 0; i < videoNames.length; i++) {
-        const videohere = document.getElementById(`${videoNames[i]}-here`);
-        const videoname = document.getElementById(`${videoNames[i]}-name`);
-        loadVideo(videoNames[i], videohere, videoname);
-    }
+    sillyme();
 });
