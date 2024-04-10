@@ -268,9 +268,10 @@ secureApiRouter.post('/video', upload.fields([{ name: 'video', maxCount: 1 }, { 
 
 // likeVideo
 secureApiRouter.post('/like', async (req, res) => {
-  const existingConnection = connections.find(c => c.id === connection.id);
+  const existingConnection = connections[connection.id];
   if (!existingConnection) {
     res.status(404).send('No websocket connection');
+    return;
   }
   let toname = await VL.getVideoOwner(req.params.video);
   ws.send(JSON.stringify({ type: 'bounce', msg: `${req.params.video}, ${toname}`, name: connection.id }));
@@ -320,7 +321,7 @@ server.on('upgrade', (request, socket, head) => {
 let connections = {};
 var connection = {id: null, alive: false, ws: null};
 wss.on('connection', (ws) => {
-  ws.send({msg: 'connected'});
+  ws.send(JSON.stringify({msg: 'connected'}));
 
   ws.on('message', async function message(data) {
     let fromname = data.name;
@@ -328,13 +329,17 @@ wss.on('connection', (ws) => {
       connection = { id: fromname, alive: true, ws: ws};
       connections[id] = connection;
     } else {
-      let [video, toname] = data.msg.split(', ');
-      if (connections[toname]) {
-        const number = parseInt(await VL.getLikes(video));
-        const message = { msg: `like ${video} ${number}`, name: fromname };
-        connections[toname].ws.send(JSON.stringify(message));
+      if (data.msg && data.msg.includes(', ')) {
+        let [video, toname] = data.msg.split(', ');
+        if (connections[toname]) {
+          const number = parseInt(await VL.getLikes(video));
+          const message = { msg: `like ${video} ${number}`, name: fromname };
+          connections[toname].ws.send(JSON.stringify(message));
+        } else {
+          console.log(`Connection with id ${toname} not found`);
+        }
       } else {
-        console.log(`Connection with id ${toname} not found`);
+        console.log(data);
       }
     }
   });
@@ -352,8 +357,8 @@ wss.on('connection', (ws) => {
 
 // Keep active connections alive
 setInterval(() => {
-  connections.forEach((c) => {
-    // Kill any connection that didn't respond to the ping last time
+  Object.keys(connections).forEach((id) => {
+    let c = connections[id];
     if (!c.alive) {
       c.ws.terminate();
     } else {

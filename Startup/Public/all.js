@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('WebSocket opened:', event);
     
         socket.onmessage = async (event) => {
-            const text = await event.data.text();
+            const text = await event.data;
             const received = JSON.parse(text);
             if (received.msg === 'connected') {
                 let username = await fetch('/api/profileName')
