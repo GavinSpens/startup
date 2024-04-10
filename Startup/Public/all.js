@@ -24,15 +24,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
         socket.onmessage = async (event) => {
             const text = await event.data.text();
-            const data = JSON.parse(text);
-            if (data.msg === 'connected') {
+            const received = JSON.parse(text);
+            if (received.msg === 'connected') {
                 let username = await fetch('/api/profileName')
                 if (username) {
-                    sendMsg('received connected', username);
+                    sendMsg('connected');
                 }
+            } else if (received.type === 'bounce') {
+                sendMsg(received.msg, received.name);
+            } else {
+                msg(received.name, received.msg);
             }
-            msg(data.name, data.msg);
-            
         };
 
         socket.onclose = (event) => {
@@ -50,9 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const [action, video, number] = msg.split(' ');
             if (action === 'like') {
                 if (number === '1') {
-                    alert(`${name} liked your video!\n${video} has ${number} like`);
+                    alert(`${name} liked your video!\n\'${video}\' has ${number} like`);
                 } else {
-                    alert(`${name} liked your video!\n${video} has ${number} likes`);
+                    alert(`${name} liked your video!\n\'${video}\' has ${number} likes`);
                 }
             }
         }
@@ -282,11 +284,12 @@ document.addEventListener('DOMContentLoaded', function() {
             await waitForElement(`${name}-like-button`);
             let button = document.getElementById(`${name}-like-button`);
             button.addEventListener('click', async () => {
-                response = await fetch('/api/like/' + name, {
+                response = await fetch('/api/like', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
-                    }
+                    },
+                    body: JSON.stringify({ video: name })
                 });
                 const text = await response.text();
                 if (text === "true") {

@@ -257,7 +257,8 @@ secureApiRouter.post('/video', upload.fields([{ name: 'video', maxCount: 1 }, { 
     res.status(409).json({ message: 'Video title already in use' });
     return;
   }
-  const uploaded = await VL.uploadVideo(req.body.title, req.body.description, req.files.video[0], req.files.thumbnail[0]);
+  const username = await DB.getUserByToken(req.cookies.token).email;
+  const uploaded = await VL.uploadVideo(username, req.body.title, req.body.description, req.files.video[0], req.files.thumbnail[0]);
   if (uploaded) {
     res.json({ message: 'Video uploaded successfully' });
   } else {
@@ -266,18 +267,19 @@ secureApiRouter.post('/video', upload.fields([{ name: 'video', maxCount: 1 }, { 
 });
 
 // likeVideo
-secureApiRouter.post('/like/:name', async (req, res) => {
+secureApiRouter.post('/like', async (req, res) => {
   const existingConnection = connections.find(c => c.id === connection.id);
   if (!existingConnection) {
     res.status(404).send('No websocket connection');
   }
-  ws.send(JSON.stringify({ type: 'like', name: req.params.name }));
-  const liked = await VL.likeVideo(req.params.name);
+  let toname = await VL.getVideoOwner(req.params.video);
+  ws.send(JSON.stringify({ type: 'bounce', msg: `${req.params.video}, ${toname}`, name: connection.id }));
+
+  const liked = await VL.likeVideo(req.params.video);
   res.send(liked);
 });
 
 // Default error handler
-
 app.use(function (err, req, res, next) {
   res.status(500).send({ type: err.name, message: err.message });
 });
@@ -315,34 +317,31 @@ server.on('upgrade', (request, socket, head) => {
 });
 
 // Keep track of all the connections so we can forward messages
-let connections = [];
-let id = myusername;
-var connection = {id: id, alive: false, ws: null};
+let connections = {};
+var connection = {id: null, alive: false, ws: null};
 wss.on('connection', (ws) => {
-  connection = { id: ++id, alive: true, ws: ws, user: null};
   ws.send({msg: 'connected'});
 
-  
-  
-
-
-  connections.push(connection);
-  ws.on('message', function message(data) {
-    // connections.forEach((c) => {
-    //   if (c.user === connection.user) {
-    //     c.ws.send();
-    //   }
-    // });
-    let c = connections[]
+  ws.on('message', async function message(data) {
+    let fromname = data.name;
+    if (data.msg === 'connected') {
+      connection = { id: fromname, alive: true, ws: ws};
+      connections[id] = connection;
+    } else {
+      let [video, toname] = data.msg.split(', ');
+      if (connections[toname]) {
+        const number = parseInt(await VL.getLikes(video));
+        const message = { msg: `like ${video} ${number}`, name: fromname };
+        connections[toname].ws.send(JSON.stringify(message));
+      } else {
+        console.log(`Connection with id ${toname} not found`);
+      }
+    }
   });
 
-  // Remove the closed connection so we don't try to forward anymore
+  // Remove the closed connection
   ws.on('close', () => {
-    const pos = connections.findIndex((o, i) => o.id === connection.id);
-
-    if (pos >= 0) {
-      connections.splice(pos, 1);
-    }
+    delete connections[connection.id];
   });
 
   // Respond to pong messages by marking the connection alive
