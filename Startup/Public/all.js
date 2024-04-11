@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const text = await event.data;
             const received = JSON.parse(text);
             if (received.msg === 'connected') {
-                let username = await fetch('/api/profileName')
+                let username = await fetch('/api/email');
                 if (username) {
                     sendMsg('connected');
                 }
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         async function sendMsg(msg, name) {
             if (!name) {
-                name = await fetch('/api/profileName').then(res => res.text());
+                name = await fetch('/api/email').then(res => res.text());
             }
             socket.send(`{"name":"${name}", "msg":"${msg}"}`);
         }
