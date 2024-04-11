@@ -268,9 +268,8 @@ secureApiRouter.post('/video', upload.fields([{ name: 'video', maxCount: 1 }, { 
 
 // likeVideo
 secureApiRouter.post('/like', async (req, res) => {
-  const existingConnection = connections[connection.id];
-  if (!existingConnection) {
-    res.status(404).send('No websocket connection');
+  if (!DB.getThisConnection()) {
+    res.status(404).send('Not connected');
     return;
   }
   let toname = await VL.getVideoOwner(req.params.video);
@@ -317,8 +316,7 @@ server.on('upgrade', (request, socket, head) => {
   });
 });
 
-// Keep track of all the connections so we can forward messages
-let connections = {};
+// Keep track of all the connections
 var connection = {id: null, alive: false, ws: null};
 wss.on('connection', (ws) => {
   ws.send(JSON.stringify({msg: 'connected'}));
@@ -327,10 +325,11 @@ wss.on('connection', (ws) => {
     let fromname = data.name;
     if (data.msg === 'connected') {
       connection = { id: fromname, alive: true, ws: ws};
-      connections[id] = connection;
+      DB.saveconnection(connection);
     } else {
       if (data.msg && data.msg.includes(', ')) {
         let [video, toname] = data.msg.split(', ');
+        let connections = await DB.getconnections();
         if (connections[toname]) {
           const number = parseInt(await VL.getLikes(video));
           const message = { msg: `like ${video} ${number}`, name: fromname };
@@ -346,17 +345,18 @@ wss.on('connection', (ws) => {
 
   // Remove the closed connection
   ws.on('close', () => {
-    delete connections[connection.id];
+    DB.deleteconnection();
   });
 
   // Respond to pong messages by marking the connection alive
   ws.on('pong', () => {
-    connection.alive = true;
+    DB.alive();
   });
 });
 
 // Keep active connections alive
 setInterval(() => {
+  let connections = DB.getConnections();
   Object.keys(connections).forEach((id) => {
     let c = connections[id];
     if (!c.alive) {

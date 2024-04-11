@@ -7,7 +7,7 @@ const url = `mongodb+srv://${config.username}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db();
 const userCollection = db.collection('user');
-
+const connectionCollection = db.collection('connection');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -105,6 +105,21 @@ async function updatePfp(token, pfpLink) {
   }
 }
 
+async function getThisConnection() {
+  //returns the web socket connection
+  
+}
+
+async function getConnections() {
+  //returns all the web socket connections
+
+}
+
+async function addConnection(connection) {
+  //adds a new web socket connection to the database
+  
+}
+
 module.exports = {
   getUser,
   getUserByToken,
@@ -113,4 +128,7 @@ module.exports = {
   updateName,
   updateDescription,
   verify,
+  getThisConnection,
+  getConnections,
+  addConnection,
 };

@@ -26,10 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const text = await event.data;
             const received = JSON.parse(text);
             if (received.msg === 'connected') {
-                let username = await fetch('/api/email');
-                if (username) {
-                    sendMsg('connected');
-                }
+                let response = await fetch('/api/email');
+                const username = await response.text();
+                sendMsg('connected', (username) ? username : null);
             } else if (received.type === 'bounce') {
                 sendMsg(received.msg, received.name);
             } else {
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!name) {
                 name = await fetch('/api/email').then(res => res.text());
             }
-            socket.send(`{"name":"${name}", "msg":"${msg}"}`);
+            socket.send(JSON.stringify({ msg, name }));
         }
 
         async function msg(name, msg) {
