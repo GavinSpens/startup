@@ -178,7 +178,7 @@ secureApiRouter.use(async (req, res, next) => {
 secureApiRouter.get('/email', async (req, res) => {
   const user = await DB.getUserByToken(req.cookies.token);
   if (user) {
-    res.json(user.email);
+    res.send(user.email);
   } else {
     res.status(404).json(null);
   }
@@ -268,15 +268,17 @@ secureApiRouter.post('/video', upload.fields([{ name: 'video', maxCount: 1 }, { 
 
 // likeVideo
 secureApiRouter.post('/like', async (req, res) => {
-  if (!DB.getThisConnection()) {
-    res.status(404).send('Not connected');
+  const existingConnection = connections[connection.id];
+  if (!existingConnection) {
+    res.status(404).send('No websocket connection');
     return;
   }
-  let toname = await VL.getVideoOwner(req.params.video);
-  ws.send(JSON.stringify({ type: 'bounce', msg: `${req.params.video}, ${toname}`, name: connection.id }));
+  let toname = await VL.getVideoOwner(req.body.video);
+  let ws = connections[connection.id].ws;
+  ws.send(JSON.stringify({ type: 'bounce', msg: `${req.body.video}, ${toname}`, name: connection.id }));
 
-  const liked = await VL.likeVideo(req.params.video);
-  res.send(liked);
+  
+  res.send(true);
 });
 
 // Default error handler
@@ -317,20 +319,24 @@ server.on('upgrade', (request, socket, head) => {
 });
 
 // Keep track of all the connections
+let connections = {};
 var connection = {id: null, alive: false, ws: null};
 wss.on('connection', (ws) => {
   ws.send(JSON.stringify({msg: 'connected'}));
-
   ws.on('message', async function message(data) {
+    data = JSON.parse(data);
     let fromname = data.name;
     if (data.msg === 'connected') {
+      if (!fromname) {
+        fromname = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      }
       connection = { id: fromname, alive: true, ws: ws};
-      DB.saveconnection(connection);
+      connections[fromname] = connection;
     } else {
       if (data.msg && data.msg.includes(', ')) {
         let [video, toname] = data.msg.split(', ');
-        let connections = await DB.getconnections();
         if (connections[toname]) {
+          await VL.likeVideo(video);
           const number = parseInt(await VL.getLikes(video));
           const message = { msg: `like ${video} ${number}`, name: fromname };
           connections[toname].ws.send(JSON.stringify(message));
@@ -345,18 +351,17 @@ wss.on('connection', (ws) => {
 
   // Remove the closed connection
   ws.on('close', () => {
-    DB.deleteconnection();
+    delete connections[connection.id];
   });
 
   // Respond to pong messages by marking the connection alive
   ws.on('pong', () => {
-    DB.alive();
+    connection.alive = true;
   });
 });
 
 // Keep active connections alive
 setInterval(() => {
-  let connections = DB.getConnections();
   Object.keys(connections).forEach((id) => {
     let c = connections[id];
     if (!c.alive) {

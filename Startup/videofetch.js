@@ -74,9 +74,13 @@ const getVideoNames = async () => {
 const likeVideo = async (keyName) => {
   try {
     const data = await s3.send(new GetObjectCommand({ Bucket: bucketName, Key: keyName + ".txt"}));
-    const txt = data.Body.toString();
-    const [desc, likes, owner] = txt.split("\n");
-    await s3.send(new PutObjectCommand({ Bucket: bucketName, Key: keyName + ".txt", Body: desc + "\n" + (parseInt(likes) + 1) }));
+    let txt = '';
+    for await (const chunk of data.Body) {
+      txt += chunk.toString();
+    }
+    const [desc, likes, owner] = txt.split("\r\n");
+    let body = desc + "\r\n" + (parseInt(likes) + 1) + "\r\n" + owner;
+    await s3.send(new PutObjectCommand({ Bucket: bucketName, Key: keyName + ".txt", Body: body }));
     return true;
   } catch (err) {
     console.log("Error", err);
@@ -87,8 +91,11 @@ const likeVideo = async (keyName) => {
 const getLikes = async (keyName) => {
   try {
     const data = await s3.send(new GetObjectCommand({ Bucket: bucketName, Key: keyName + ".txt"}));
-    const txt = data.Body.toString();
-    const [desc, likes, owner] = txt.split("\n");
+    let txt = '';
+    for await (const chunk of data.Body) {
+      txt += chunk.toString();
+    }
+    const [desc, likes, owner] = txt.split("\r\n");
     return likes;
   } catch (err) {
     console.log("Error", err);
@@ -155,8 +162,11 @@ const uploadVideo = async (username, keyName, description, thm, video) => {
 const getVideoOwner = async (keyName) => {
   try {
     const data = await s3.send(new GetObjectCommand({ Bucket: bucketName, Key: keyName + ".txt"}));
-    const txt = data.Body.toString();
-    const [desc, likes, owner] = txt.split("\n");
+    let txt = '';
+    for await (const chunk of data.Body) {
+      txt += chunk.toString();
+    }
+    const [desc, likes, owner] = txt.split("\r\n");
     return owner;
   } catch (err) {
     console.log("Error", err);
