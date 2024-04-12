@@ -86,7 +86,7 @@ For this deliverable I log in users. I stored the data in the database.
 
 For this deliverable I used webSocket to send a 'like' notification on the frontend in realtime.
 
- Backend listens for WebSocket connection - done!
- Frontend makes WebSocket connection - done!
- Data sent over WebSocket connection - done!
- WebSocket data displayed - sends a popup if the owner of the video is currently logged in when their video is 'liked'
+- Backend listens for WebSocket connection - done!
+- Frontend makes WebSocket connection - done!
+- Data sent over WebSocket connection - done!
+- WebSocket data displayed - sends a popup if the owner of the video is currently logged in when their video is 'liked'
