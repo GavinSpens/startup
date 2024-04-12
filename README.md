@@ -42,3 +42,51 @@ For this deliverable I built out the structure of my application using HTML.
 - **Images** - I have an image for my logo present on each page.
 - **DB/Login** - Input box and submit button for login. Database will be the video library along with other information.
 - **WebSocket** - Video posts will be represented as real-time interactions. If I have time, I may also include a comments feature or a "like" feature.
+
+---------------------------
+
+## JavaScript Deliverable
+
+I added a bunch of JS code, making the pages more dynamic, and implementing functionality for users.
+I apologize that this is submitted past when the site was at this point - about halfway into the semester, I realized that my HTML and CSS were awful, and needed to be entirely reworked in order to move forward, so I got a bit behind, and I just implemented most of the deliverables in one go.
+
+- login - You can press the login button to go to the login page, and there's entry options, with a submit button.
+- database - Login credentials are stored in the database, as well as profile picture reference data.
+- WebSocket - 'like' button exists, which sends a notification to the user who owns the video.
+- application logic - 'like' count increases, upload functionality, using s3 to fetch videos...
+
+---------------------------
+
+## Service deliverable
+
+For this deliverable I added backend endpoints that receives profile information and image requests, and sends a profile picture
+
+- Node.js/Express HTTP service - done!
+- Static middleware for frontend - done!
+- Calls to third party endpoints - done! - profile picture
+- Backend service endpoints - Login data stored in database
+- Frontend calls service endpoints - fetch
+
+-----------------------------
+
+## DB/Login deliverable
+
+For this deliverable I log in users. I stored the data in the database.
+
+- MongoDB Atlas database created - done!
+- Stores data in MongoDB - done!
+- User registration - Creates a new account in the database.
+- Existing user - Doesn't create a new user, just logs in.
+- Use MongoDB to store credentials - Stores both user and picture info.
+- Restricts functionality - You cannot get user data or upload videos until you have logged in. This is restricted on the backend.
+
+------------------------------
+
+## WebSocket deliverable
+
+For this deliverable I used webSocket to send a 'like' notification on the frontend in realtime.
+
+ Backend listens for WebSocket connection - done!
+ Frontend makes WebSocket connection - done!
+ Data sent over WebSocket connection - done!
+ WebSocket data displayed - sends a popup if the owner of the video is currently logged in when their video is 'liked'
