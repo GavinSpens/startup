@@ -1,3 +1,3 @@
-export function Profile(username, authState) {
+export async function Profile(username, authState) {
 
 }

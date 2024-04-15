@@ -1,5 +1,5 @@
-import { Goto } from '../functions/goto.jsx';
-import { Logout } from '../functions/logout.jsx';
+import { Goto } from './Goto.jsx';
+import { Logout } from './Logout.jsx';
 
 export function Loginbtn(username) {
     if (!username || username === "Gavin Spens") {

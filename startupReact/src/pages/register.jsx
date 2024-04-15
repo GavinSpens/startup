@@ -1,2 +1,2 @@
-export function Register() {
+export async function Register() {
 }

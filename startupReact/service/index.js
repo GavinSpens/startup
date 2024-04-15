@@ -79,7 +79,7 @@ apiRouter.get('/auth/verified', async (req, res) => {
   res.send(false);
 });
 
-//setVerified
+//SetVerified
 apiRouter.post('/auth/verified', async (req, res) => {
   const { y_n } = req.body;
   response = DB.verify(req.cookies.token, y_n === 'true');

@@ -1,3 +1,5 @@
-export function Upload(username, authState) {
+import { All_jsx } from './All.jsx';
+
+export async function Upload(username, authState) {
     
 }

@@ -1,4 +1,4 @@
-export function Login() {
+export async function Login() {
 
 
     return (

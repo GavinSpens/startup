@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
             response = await fetch('/api/auth/logout', {
                 method: 'DELETE'
             });
-            window.location.href = '/index.html';            
+            window.location.href = '/index.html';
         } else {
             response = await fetch('/api/auth/login', {
                 method: 'POST',

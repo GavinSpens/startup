@@ -1,7 +1,7 @@
 import { Loginbtn } from '../functions/loginbtn.jsx';
 import { React } from 'react';
 
-export function Main(username) {
+export async function Main(username) {
     username = username.username;
     if (!username) {
         username = 'Gavin Spens'
