@@ -90,3 +90,14 @@ For this deliverable I used webSocket to send a 'like' notification on the front
 - Frontend makes WebSocket connection - done!
 - Data sent over WebSocket connection - done!
 - WebSocket data displayed - sends a popup if the owner of the video is currently logged in when their video is 'liked'
+
+---------------------------------
+
+## React deliverable
+
+For this deliverable, I was not able to get React working properly. After I put my code into React and converted it so I thought it would be compatible, it kept returning errors. As I said in the JS deliverable, I got behind about halfway through the class due to really bad HTML and CSS, so I spent some time redoing it... I just didn't know what I was doing at the very beginning. Anyways, I guess it caught up to me here, and I didn't quite have enough time to finish. I have the code all ![here](./startupreact/), but I get that if it's not functional, it's not much use. I did put some work into it though.
+
+- bundled using vite - done, but then undone? idk you can't tell anyways now
+- functional react components - I honestly have no idea if the components are functional... I definitely attempted getting these
+- router - I'm 90% sure that this one would be working but idk
+- hooks - I was focused on just making it work first, so I didn't get to this at all
