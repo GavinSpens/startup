@@ -67,7 +67,7 @@ const getVideoNames = async () => {
     return [...new Set(data.Contents.map((element) => element.Key))];
   } catch (err) {
     console.log("Error", err);
-    return;
+    return { error: err.message };
   }
 }
 

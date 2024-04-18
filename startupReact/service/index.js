@@ -157,7 +157,7 @@ apiRouter.get('/description/:name', async (req, res) => {
 
 // GetVideoNames
 apiRouter.get('/videoNames', async (_req, res) => {
-  res.send(await VL.getVideoNames());
+  res.json(await VL.getVideoNames());
 });
 
 // secureApiRouter verifies credentials for endpoints
@@ -283,7 +283,7 @@ secureApiRouter.post('/like', async (req, res) => {
 
 // Default error handler
 app.use(function (err, req, res, next) {
-  res.status(500).send({ type: err.name, message: err.message });
+  res.status(500).json({ type: err.name, message: err.message });
 });
 
 // Return the application's default page if the path is unknown
