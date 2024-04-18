@@ -1,5 +1,5 @@
 async function SetVerified(y_n) {
-    response = await fetch('/api/auth/verified', {
+    let response = await fetch('/api/auth/verified', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

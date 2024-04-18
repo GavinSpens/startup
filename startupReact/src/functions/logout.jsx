@@ -1,5 +1,5 @@
 export async function Logout() {
-    response = await fetch('/api/auth/logout', {
+    let response = await fetch('/api/auth/logout', {
         method: 'DELETE'
     });
     if (response.status === 200) {

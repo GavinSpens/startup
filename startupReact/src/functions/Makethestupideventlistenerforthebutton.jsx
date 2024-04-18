@@ -12,7 +12,7 @@ async function Makethestupideventlistenerforthebutton(name) {
         await WaitForElement(`${name}-like-button`);
         let button = document.getElementById(`${name}-like-button`);
         button.addEventListener('click', async () => {
-            response = await fetch('/api/like', {
+            let response = await fetch('/api/like', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -59,7 +59,7 @@ export async function All_jsx() {
             if (!emailInput.value || !passwordInput.value) {
                 return;
             }
-            response = await fetch('/api/user/' + emailInput.value + '/' + passwordInput.value, {
+            let response = await fetch('/api/user/' + emailInput.value + '/' + passwordInput.value, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

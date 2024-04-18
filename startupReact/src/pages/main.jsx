@@ -1,7 +1,7 @@
-import { Loginbtn } from '../functions/loginbtn.jsx';
+import { Loginbtn } from '../functions/Loginbtn.jsx';
 import { React } from 'react';
 
-export async function Main(username) {
+export function Main(username) {
     username = username.username;
     if (!username) {
         username = 'Gavin Spens'
@@ -19,7 +19,7 @@ export async function Main(username) {
                     <span>{username}</span>
                     <input className="input" type="text" name="varSearch" placeholder="Search..." />
                     <a className="link" href="https://github.com/GavinSpens/startup">GitHub Repository</a>
-                    <>{Loginbtn(username)}</>
+                    <>{Loginbtn()}</>
                 </nav>
             </header>
             <main className="row-space-between full-width">
@@ -30,7 +30,7 @@ export async function Main(username) {
                         <button className="btn gray" href="index.html" id="recent">Recent</button>
                         <span><button className="btn gray" href="profile.html" id="profile">Profile</button></span>
                     </div>
-                    <button className="btn blue" href="login.html" id="login2">Login</button>
+                    <>{Loginbtn()}</>
                 </div>
                 <div id="videos-here" className="medium rounder grid font-20" style={{width: 'calc(100vw - 200px)', height: 'calc(100vh - 145px)', marginTop: '10px', overflowY: 'auto'}}>
                     {/* Add a parent element here */}

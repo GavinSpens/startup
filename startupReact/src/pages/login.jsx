@@ -1,8 +1,8 @@
-export async function Login() {
+export function Login() {
 
 
     return (
-        <body class="medium-dark text-light">
+        <div class="medium-dark text-light">
             <header>
                 <nav class="round row-space-between font-20 dark border-bottom">
                     <a class="link font-30 header_wide left" href="index.html">
@@ -26,6 +26,6 @@ export async function Login() {
             <footer>
 
             </footer>
-        </body>
+        </div>
     )
 }

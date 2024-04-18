@@ -11,9 +11,23 @@ function Web_Socket() {
             const text = await event.data;
             const received = JSON.parse(text);
             if (received.msg === 'connected') {
-                let response = await fetch('/api/email');
-                const username = await response.text();
-                sendMsg('connected', (username) ? username : null);
+                await fetch('/api/email', {
+                    method: 'GET',
+                    credentials: 'include' 
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    const username = (data) ? data : null;
+                    sendMsg('connected', username);
+                })
+                .catch(e => {
+                    console.error('Error fetching /api/email:', e);
+                });
             } else if (received.type === 'bounce') {
                 sendMsg(received.msg, received.name);
             } else {
