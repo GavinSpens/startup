@@ -101,3 +101,5 @@ For this deliverable, I was not able to get React working properly. After I put 
 - functional react components - I honestly have no idea if the components are functional... I definitely attempted getting these
 - router - I'm 90% sure that this one would be working but idk
 - hooks - I was focused on just making it work first, so I didn't get to this at all
+
+(I never pushed the react update to the server because it never was functional enough, so uhh yeah. If you want the link to the site, like from the websocket deliverable, [here it is](https://startup.videolibrary.click))
